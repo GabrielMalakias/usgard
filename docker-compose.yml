@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: spacewing_development
+      POSTGRES_USER: spacewing
+      POSTGRES_PASSWORD: inicial1234
+  web:
+    build: .
+    env_file:
+      - .env
+    command: bundle exec hanami s --host '0.0.0.0'
+    volumes:
+      - .:/space_wing
+    ports:
+      - "2300:2300"
+    depends_on:
+      - db
+
