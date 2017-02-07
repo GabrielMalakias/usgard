@@ -16,7 +16,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'rspec'
+  gem 'minitest'
 end
 
 group :production do
