@@ -1,11 +1,11 @@
 FROM ruby:2.3.3
 
-RUN mkdir /space_wing
-WORKDIR /space_wing
+RUN mkdir /usgard
+WORKDIR /usgard
 
 ADD Gemfile .
 ADD Gemfile.lock .
 
 RUN bundle install
 
-ADD . /space_wing
+ADD . /usgard

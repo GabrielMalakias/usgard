@@ -1,0 +1,13 @@
+#!/bin/sh
+# script/server: Launch the application and any extra required processes
+#                locally.
+set -e
+cd "$(dirname "$0")/.."
+
+echo ">>> Starting application..."
+
+if command -v docker-compose >/dev/null 2>&1; then
+  docker-compose up
+else
+  echo "==> Please install docker first"
+fi
