@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: usgard_development
+      POSTGRES_USER: usgard
+      POSTGRES_PASSWORD: initial123
+  web:
+    build: .
+    env_file:
+      - .env
+    command: bundle exec hanami s --host '0.0.0.0'
+    volumes:
+      - .:/usgard
+    ports:
+      - "2300:2300"
+    depends_on:
+      - db
+

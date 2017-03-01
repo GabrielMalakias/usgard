@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# script/bootstrap: Resolve all dependencies that the application requires to
+#                   run.
+
+
+echo "==> Building and solving dependencies…"
+
+if command -v docker-compose >/dev/null 2>&1; then
+  docker-compose build
+else
+  echo "==> Please install docker first"
+fi
