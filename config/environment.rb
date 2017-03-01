@@ -22,4 +22,16 @@ Hanami.configure do
       test        :test
     end
   end
+
+  environment :development do
+    logger level: :info
+  end
+
+  environment :production do
+    logger level: :info, formatter: :json
+
+    mailer do
+      delivery :smtp, address: ENV['SMTP_HOST'], port: ENV['SMTP_PORT']
+    end
+  end
 end

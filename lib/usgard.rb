@@ -1,1 +1,1 @@
-Hanami::Utils.require!("#{__dir__}/usgard")
+#Hanami::Utils.require!("#{__dir__}/usgard")
