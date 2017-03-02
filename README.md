@@ -10,5 +10,11 @@
 * Redis(3.2)
 * Docker-compose version 1.8.1(optional)
 
+## Running mqtt server
+
+``` sh
+docker run -ti -p 1883:1883 -p 9001:9001 toke/mosquitto
+```
+
 ## Maintainers
 [Gabriel Malaquias](mailto:gabriel07malakias@gmail.com)
