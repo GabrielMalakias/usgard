@@ -1,0 +1,26 @@
+doctype html
+html.ls-theme-blue
+  head
+    title Usgard - The garden of Us
+    == favicon
+    == javascript 'paho'
+    == javascript 'jquery'
+    == javascript 'bootstrap'
+    == stylesheet 'bootstrap'
+
+  body
+    div.row
+      div.col-md-12
+        h1 Usgard
+    ul.nav.nav-pills
+      li role='presentation'
+        == link_to 'Home', '/'
+      li role='presentation'
+        == link_to 'Sensors', '/sensors'
+
+    div.container-fluid
+      div id='content'
+        == yield
+
+    div id='footer'
+      p Gabriel Malaquias

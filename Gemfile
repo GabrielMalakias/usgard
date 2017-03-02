@@ -7,6 +7,8 @@ gem 'hanami-model', '1.0.0.beta1'
 gem 'pg'
 gem 'puma',  '3.7.1'
 
+gem 'slim'
+
 group :development do
   gem 'shotgun'
 end
