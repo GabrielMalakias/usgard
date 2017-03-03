@@ -6,7 +6,5 @@
 get '/', to: 'home#index'
 
 resources 'sensors' do
-  get '/',    to: 'sensors#index'
-  get '/:id', to: 'sensors#show'
 end
 

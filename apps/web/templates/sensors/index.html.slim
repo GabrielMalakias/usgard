@@ -7,10 +7,8 @@ table.table
       th Name
       th Topic
   tbody
-    tr
-      td Luminosity
-      td sensors/luminosity
-    tr
-      td Temperature
-      td sensors/temperature
+    - sensors.each do |s|
+      tr
+        td #{s.name}
+        td #{s.mqtt_topic}
 

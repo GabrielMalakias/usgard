@@ -4,6 +4,8 @@ require 'hanami/model'
 require_relative '../lib/usgard'
 require_relative '../apps/web/application'
 
+require_relative './initializers/auto_inject'
+
 Hanami.configure do
   mount Web::Application, at: '/'
 

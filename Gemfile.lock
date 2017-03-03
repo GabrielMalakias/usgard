@@ -3,6 +3,8 @@ GEM
   specs:
     concurrent-ruby (1.0.5)
     dotenv (2.2.0)
+    dry-auto_inject (0.4.2)
+      dry-container (>= 0.3.4)
     dry-configurable (0.6.2)
       concurrent-ruby (~> 1.0)
     dry-container (0.6.0)
@@ -133,6 +135,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv (~> 2.0)
+  dry-auto_inject
   hanami (= 1.0.0.beta1)
   hanami-model (= 1.0.0.beta1)
   minitest

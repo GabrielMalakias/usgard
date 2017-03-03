@@ -5,7 +5,7 @@
 
 echo "==> Running tests…"
 
-./script/bootstrap
+./script/setup
 
 if command -v docker-compose >/dev/null 2>&1; then
   if [ -n "$1" ]; then
