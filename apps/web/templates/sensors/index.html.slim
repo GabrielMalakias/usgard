@@ -8,7 +8,9 @@ table.table
       th Topic
   tbody
     - sensors.each do |s|
+
       tr
+        td == sensor_link(s.id)
         td #{s.name}
         td #{s.mqtt_topic}
 
