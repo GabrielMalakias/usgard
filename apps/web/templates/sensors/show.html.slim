@@ -1,12 +1,15 @@
 == javascript 'sensors'
 
-h1 #{sensor.name}
+h1
+  | #{sensor.name} -
+  small id='mqtt_topic' #{sensor.mqtt_topic}
 
 blockquote.col.md-4
   p #{sensor.description}
 
-  javascript:
-    sensor.init();
+button.btn.btn_secondary Show status
+
+div id='display_box' style='overflow: auto'
 
 
 
