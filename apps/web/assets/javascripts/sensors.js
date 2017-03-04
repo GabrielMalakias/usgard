@@ -1,3 +1,24 @@
+var button = {
+  active: false,
+  config: {
+    button: '#status',
+    object: '#display_box'
+  },
+  init: function () {
+    $(document)
+      .on('click', button.config.button, button.execute);
+  },
+  execute: function() {
+    if (button.active == false) {
+      button.active = true;
+      $(button.config.object).show();
+    } else {
+      $(button.config.object).hide();
+      button.active = false;
+    }
+  }
+}
+
 var sensor = {
   config: {
     topic: '#mqtt_topic',
@@ -32,4 +53,4 @@ var sensor = {
   }
 };
 
-$( document ).ready( sensor.init );
+$( document ).ready( function () { sensor.init(); button.init(); });
