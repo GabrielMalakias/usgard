@@ -1,6 +1,6 @@
 Hanami::Model.migration do
   change do
-    create_table :sensors do
+    create_table :actuators do
       primary_key :id
 
       column :name,         String
