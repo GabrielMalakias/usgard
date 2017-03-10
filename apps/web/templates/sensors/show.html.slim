@@ -1,15 +1,13 @@
-== javascript 'sensors'
+div.col-md-7
+  h1 #{sensor.name}
 
-h1
-  | #{sensor.name} -
-  small id='mqtt_topic' #{sensor.mqtt_topic}
+  dl.dl-horizontal
+    dt id='mqtt_topic' #{sensor.mqtt_topic}
+    dd #{sensor.description}
 
-blockquote.col.md-4
-  p #{sensor.description}
+  button.btn.btn_secondary id="status" Status
 
-button.btn.btn_secondary id="status" Status
+div.col-md-5
+  div id='display_box'
 
-div id='display_box' style='overflow-y: auto; height:300px; display: none'
-
-
-
+== javascript 'show'
