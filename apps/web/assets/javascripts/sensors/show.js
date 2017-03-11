@@ -1,4 +1,4 @@
-var button = {
+var statusButton = {
   config: {
     button: '#status',
     object: '#display_box'
@@ -6,15 +6,38 @@ var button = {
 
   init: function () {
     $(document)
-      .on('click', button.config.button, button.execute);
+        .on('click', statusButton.config.button, statusButton.execute);
   },
 
   execute: function() {
-    if ($(button.config.object).is(':visible')) {
-      $(button.config.object).hide();
+    if ($(statusButton.config.object).is(':visible')) {
+      $(statusButton.config.object).hide();
     } else {
-      $(button.config.object).show();
+      $(statusButton.config.object).show();
     }
+  }
+}
+
+var deleteButton = {
+  config: {
+    button: '#delete',
+    object: '#sensorid'
+  },
+
+  init: function () {
+    $(document)
+      .on('click', deleteButton.config.button, deleteButton.execute);
+  },
+
+  execute: function() {
+    var id  = $(deleteButton.config.object).text();
+    $.ajax({
+      url: '/sensors/' + id,
+      type: 'DELETE',
+      success: function(result) {
+        document.location.href = '/sensors'
+      }
+    });
   }
 }
 
@@ -51,5 +74,6 @@ var sensor = {
 
 $(document).ready( function () {
   sensor.init();
-  button.init();
+  statusButton.init();
+  deleteButton.init();
 });

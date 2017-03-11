@@ -1,7 +1,6 @@
-h2 Sensor
-  | Index
+h1 Actuator Index
 
-== link_to('New', routes.new_sensor_path)
+== link_to('New', routes.new_actuator_path)
 
 table.table
   thead
@@ -9,10 +8,10 @@ table.table
       th Name
       th Topic
   tbody
-    - sensors.each do |s|
+    - actuators.each do |s|
 
       tr
-        td == sensor_link(s.id)
+        td == actuator_link(s.id)
         td #{s.name}
         td #{s.mqtt_topic}
 

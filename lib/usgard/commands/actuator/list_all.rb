@@ -1,8 +1,8 @@
 module Usgard
   module Commands
-    module Sensor
+    module Actuator
       class ListAll
-        include ::AutoInject['sensors.repository']
+        include ::AutoInject['actuators.repository']
 
         def call
           repository.all

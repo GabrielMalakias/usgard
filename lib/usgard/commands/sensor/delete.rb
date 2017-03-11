@@ -1,15 +1,13 @@
 module Usgard
   module Commands
     module Sensor
-      class FindById
+      class Destroy
         include ::AutoInject['sensors.repository']
 
         def call(id)
-          repository.find id
+          repository.delete id
         end
       end
     end
   end
 end
-
-

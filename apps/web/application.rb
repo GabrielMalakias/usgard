@@ -231,7 +231,7 @@ module Web
         base-uri 'self';
         default-src 'none';
         script-src 'self';
-        connect-src ws:;
+        connect-src ws: 'self';
         img-src 'self' https: data:;
         style-src 'self' 'unsafe-inline' https:;
         font-src 'self';

@@ -1,13 +1,17 @@
 div.col-md-7
   h1 #{sensor.name}
 
+  p id='sensorid' style='display: none' #{sensor.id}
+
   dl.dl-horizontal
     dt id='mqtt_topic' #{sensor.mqtt_topic}
     dd #{sensor.description}
 
-  button.btn.btn_secondary id="status" Status
+  div.row.col-md-7
+    button.btn.btn-secondary id="status" Status
+    button.btn.btn-danger id="delete" Destroy
 
 div.col-md-5
-  div id='display_box'
+  div id='display_box' style='background-color: #333'
 
 == javascript 'show'

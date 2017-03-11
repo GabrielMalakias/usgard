@@ -9,6 +9,7 @@ gem 'puma',  '3.7.1'
 
 gem 'slim'
 gem 'dry-auto_inject'
+gem 'pry'
 
 group :development do
   gem 'shotgun'

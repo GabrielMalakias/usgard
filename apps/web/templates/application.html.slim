@@ -18,11 +18,16 @@ html.ls-theme-blue
       li role='presentation'
         == link_to 'Home', '/'
       li role='presentation'
-        == link_to 'Sensors', '/sensors'
+        == link_to 'Sensors', routes.sensors_path
+      li role='presentation'
+        == link_to 'Actuators', routes.actuators_path
 
     div.container-fluid
       div id='content'
         == yield
 
     div id='footer'
-      p Gabriel Malaquias
+      div.col-md-10
+        span Proudly powered by Hanami
+      div.col-md-2
+        span Gabriel Malaquias

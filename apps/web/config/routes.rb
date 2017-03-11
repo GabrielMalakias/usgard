@@ -5,6 +5,6 @@
 # get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
 get '/', to: 'home#index'
 
-resources 'sensors' do
-end
+resources 'sensors'
+resources 'actuators'
 

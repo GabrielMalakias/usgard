@@ -1,9 +1,9 @@
-module Web::Views::Sensors
+module Web::Views::Actuators
   class New
     include Web::View
 
     def form
-      form_for :sensor, routes.sensors_path, class: 'form-horizontal' do
+      form_for :actuator, routes.actuators_path, class: 'form-horizontal' do
         div(class: 'form-group')  do
           label 'Name', class: 'col-sm-2 control-label'
           text_field :name, class: 'col-sm-10'
@@ -20,6 +20,20 @@ module Web::Views::Sensors
         end
 
         div(class: 'form-group')  do
+          label 'Type', class: 'col-sm-2 control-label'
+
+          label 'boolean', class: 'col-sm-5 control-label' do
+            span 'Boolean'
+            radio_button :type, 'boolean'
+          end
+
+          label 'text', class: 'col-sm-5 control-label' do
+            span 'Text'
+            radio_button :type, 'text'
+          end
+        end
+
+        div(class: 'form-group')  do
           div(class: 'col-sm-offset-2 col-sm-10') do
             submit 'Create', class: 'btn btn-primary '
           end
@@ -28,4 +42,3 @@ module Web::Views::Sensors
     end
   end
 end
-
