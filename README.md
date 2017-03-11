@@ -3,6 +3,9 @@
 ## Overview
 > The Hanami application to show status(like temperature, luminosity...) and execute commands (turn on the light, for example) through a MQTT server.
 
+![alt text](http://gabrielmalakias.com.br/assets/images/usgard_perspective.png "Usgard")
+
+
 ## Dependencies
 * Ruby(2.4.0)
 * Hanami(1.0.0)
