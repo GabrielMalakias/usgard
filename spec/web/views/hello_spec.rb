@@ -1,10 +1,9 @@
 require 'spec_helper'
 
-class TestHello < Minitest::Test
-  def setup
-  end
+RSpec.describe Usgard::Commands::Sensor::Create do
+  describe '#call' do
+    subject { false }
 
-  def test_the_truthy
-    assert_equal false, true
+    it { is_expected.to be_truthy }
   end
 end
