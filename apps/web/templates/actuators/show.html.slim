@@ -1,0 +1,14 @@
+div.col-md-7
+  h1 #{actuator.name}
+
+  p id='actuatorid' style='display: none' #{actuator.id}
+
+  dl.dl-horizontal
+    dt id='mqtt_topic' #{actuator.mqtt_topic}
+    dd #{actuator.description}
+
+  div.row.col-md-7
+    button.btn.btn-secondary id="status" Status
+    button.btn.btn-danger id="delete" Destroy
+
+== javascript 'actuator_show'
