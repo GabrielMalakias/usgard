@@ -1,4 +1,4 @@
-div.col-md-7
+div
   h1 #{actuator.name}
 
   p id='actuatorid' style='display: none' #{actuator.id}
@@ -7,8 +7,15 @@ div.col-md-7
     dt id='mqtt_topic' #{actuator.mqtt_topic}
     dd #{actuator.description}
 
-  div.row.col-md-7
+  div.col-md-7
+    label Message
+    input type="text" name="msg" id="msg"
+  div.col-md-5
+    div.display-box id='display_box'
+
+  div.row
+    button.btn.btn-primary id="send" Send
     button.btn.btn-secondary id="status" Status
     button.btn.btn-danger id="delete" Destroy
 
-== javascript 'actuator_show'
+== javascript 'send'

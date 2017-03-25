@@ -1,0 +1,6 @@
+.display-box {
+  background-color: #333;
+  color: #337ab7;
+  height: 300px;
+  overflow: auto;
+}

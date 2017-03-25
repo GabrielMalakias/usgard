@@ -3,7 +3,7 @@ module Web::Views::Actuators
     include Web::View
 
     def actuator_link(id)
-      url = routes.sensor_path(id: id)
+      url = routes.actuator_path(id: id)
 
       link_to(id, url)
     end
