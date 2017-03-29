@@ -10,13 +10,15 @@ module Web::Controllers::Sensors
       end
     end
 
+    handle_exception ArgumentError => 422
+
     def call(params)
       if params.valid?
         sensor = create.(params.get(:sensor))
 
         redirect_to routes.sensor_url(id: sensor.id)
       else
-        raise ::StandardError, params.errors
+        raise ::ArgumentError, params.errors
       end
     end
   end
