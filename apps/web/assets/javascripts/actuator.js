@@ -1,101 +1,78 @@
-var actuator = {
-  config: {
-   topic: '#mqtt_topic',
-    display_box: '#display_box',
-    mqttClient: null
-  },
+App.sensor = (function() {
+  var config = { container: "display_box", channel: "actuator", user: "usgard", socket: null };
 
-  init: function (client) {
-    actuator.config.mqttClient = client;
+  function init(configuration) {
+    config =  Object.assign({}, config, configuration);
+    config.socket = App.channel.init({identifiers: identifier(), functions: subscriptionFunctions()});
 
-    actuator.config.mqttClient.connect({onSuccess: actuator.onConnect});
-    actuator.config.mqttClient.onConnectionLost = actuator.onConnectionLost;
-    actuator.config.mqttClient.onMessageArrived = actuator.onMessageArrived;
-  },
-
-  onConnect: function () {
-    console.log("Connected");
-
-    var topic = $(actuator.config.topic).text();
-    actuator.config.mqttClient.subscribe(topic);
-
-    console.log("Subscribed " + topic);
-  },
-
-  onConnectionLost: function (response) {
-    console.log("onConnectionLost: " + response.errorMessage);
-  },
-
-  onMessageArrived: function (message) {
-    $(actuator.config.display_box).prepend("<p>" + message.payloadString + new Date().toLocaleTimeString() + '</p>');
+    addListeners();
+    true
   }
-}
 
-var statusButton = {
-  config: {
-    button: '#status',
-    object: '#display_box'
-  },
-
-  init: function () {
-    $(document)
-        .on('click', statusButton.config.button, statusButton.execute);
-  },
-
-  execute: function() {
-    if ($(statusButton.config.object).is(':visible')) {
-      $(statusButton.config.object).hide();
-    } else {
-      $(statusButton.config.object).show();
-    }
+  function addListeners() {
+    return getConsoleInput().addEventListener("keydown", function (event) {
+      if (event.which == 13 || event.keyCode == 13) {
+        onEnter();
+        return false;
+      }
+      return true;
+    });
   }
-}
 
-
-var createClient = {
-  config: {
-    host: 'localhost',
-    port: '9001',
-  },
-
-  identifier: function() {
-    return "usgard_" + parseInt(Math.random() * 100, 10);
-  },
-
-  execute: function() {
-    return mqttClient.create(createClient.config, createClient.identifier());
+  function identifier() {
+    return {
+      channel: config.channel, id: config.identifier
+    };
   }
-}
 
-var sendButton = {
-  config: {
-    button: '#send',
-    object: '#msg',
-    client: null,
-    topic: null
-  },
-  init: function(client) {
-    sendButton.config.client = client;
-
-    $(document)
-        .on('click', sendButton.config.button, sendButton.execute);
-  },
-  getMessage: function() {
-    var message = new Paho.MQTT.Message($(sendButton.config.object).val());
-    message.destinationName = $(actuator.config.topic).text();
-
-    return message;
-  },
-  execute: function() {
-    sendButton.config.client.send(sendButton.getMessage());
+  function subscriptionFunctions() {
+    return { connected: onConnected, disconnected:  onDisconnected, received: onReceive }
   }
-}
 
-$(document).ready( function () {
-  var client = createClient.execute();
+  // These functions will be evaluated when cable trigger the subscriptions
+  function onDisconnected() {
+    appendMessageToBox({ user: 'system', message: "Connection Lost", system: true });
+  }
 
-  deleteButton.init('actuators');
-  actuator.init(client);
-  sendButton.init(client);
-  statusButton.init();
-});
+  function onReceive(data) {
+    appendMessageToBox(data);
+  }
+
+  function onConnected() {
+    appendMessageToBox({ user: 'system', message: "Connection Established", system: true });
+  }
+
+  function onEnter() {
+    config.socket.perform('speak', { message: getMessageFromConsoleInput() });
+  }
+
+  // Create HTML elements
+  //
+  function getMessageFromConsoleInput() {
+    var value = getConsoleInput().value;
+    getConsoleInput().value = null;
+    return value;
+  }
+
+  function createMessageNode(incomingMessage) {
+    var node = document.createElement('div');
+    node.innerHTML = '<div class="txt">' + incomingMessage + '</div>';
+    return node;
+  }
+
+  function getMessageBoxElement() {
+    return document.getElementById(config.container);
+  }
+
+  function appendMessageToBox(incomingMessage) {
+    getMessageBoxElement().appendChild(createMessageNode(incomingMessage.message));
+  }
+
+  function getConsoleInput() {
+    return document.getElementById("console")
+  }
+
+  return {
+    init: init
+  }
+}());
