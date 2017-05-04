@@ -31,6 +31,27 @@ var actuator = {
   }
 }
 
+var statusButton = {
+  config: {
+    button: '#status',
+    object: '#display_box'
+  },
+
+  init: function () {
+    $(document)
+        .on('click', statusButton.config.button, statusButton.execute);
+  },
+
+  execute: function() {
+    if ($(statusButton.config.object).is(':visible')) {
+      $(statusButton.config.object).hide();
+    } else {
+      $(statusButton.config.object).show();
+    }
+  }
+}
+
+
 var createClient = {
   config: {
     host: 'localhost',
@@ -73,6 +94,8 @@ var sendButton = {
 $(document).ready( function () {
   var client = createClient.execute();
 
+  deleteButton.init('actuators');
   actuator.init(client);
   sendButton.init(client);
+  statusButton.init();
 });

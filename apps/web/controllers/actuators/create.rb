@@ -1,7 +1,16 @@
 module Web::Controllers::Actuators
   class Create
     include Web::Action
-    include ::AutoInject['commands.actuators.create']
+    include ::AutoInject['commands.actuator.create']
+
+    params do
+      required(:actuator).schema do
+        required(:name).filled(:str?)
+        required(:description).filled(:str?)
+        required(:mqtt_topic).filled(:str?)
+      end
+    end
+
 
     def call(params)
       if params.valid?

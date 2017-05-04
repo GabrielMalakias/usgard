@@ -34,12 +34,12 @@ module Usgard
       Commands::Actuator::Create.new
     end
 
-    register('commands.actuators.create') do
-      Commands::Actuator::Create.new
+    register('commands.actuator.find_by_id') do
+      Commands::Actuator::FindById.new
     end
 
-    register('commands.actuators.find_by_id') do
-      Commands::Actuator::FindById.new
+    register('commands.actuator.destroy') do
+      Commands::Actuator::Destroy.new
     end
   end
 end

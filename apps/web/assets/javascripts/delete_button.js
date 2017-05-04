@@ -1,10 +1,13 @@
 var deleteButton = {
   config: {
     button: '#delete',
-    object: '#sensorid'
+    object: '#id',
+    resource: null
   },
 
-  init: function () {
+  init: function (resource) {
+    deleteButton.config.resource = resource;
+
     $(document)
       .on('click', deleteButton.config.button, deleteButton.execute);
   },
@@ -12,15 +15,12 @@ var deleteButton = {
   execute: function() {
     var id  = $(deleteButton.config.object).text();
     $.ajax({
-      url: '/sensors/' + id,
+      url: '/' + deleteButton.config.resource +  '/' + id,
       type: 'DELETE',
       success: function(result) {
-        document.location.href = '/sensors'
+        document.location.href = '/' + deleteButton.config.resource;
       }
     });
   }
 }
 
-$(document).ready( function () {
-  deleteButton.init();
-});

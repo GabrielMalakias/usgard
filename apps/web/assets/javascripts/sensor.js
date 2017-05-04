@@ -52,4 +52,5 @@ var sensor = {
 $(document).ready( function () {
   sensor.init();
   statusButton.init();
+  deleteButton.init('sensors');
 });

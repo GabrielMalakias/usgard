@@ -1,7 +1,7 @@
 module Web::Controllers::Actuators
   class Show
     include Web::Action
-    include ::AutoInject['commands.actuators.find_by_id']
+    include ::AutoInject['commands.actuator.find_by_id']
 
     expose :actuator
 

@@ -1,17 +1,16 @@
 div
   h1 #{sensor.name}
 
-  p id='sensorid' style='display: none' #{sensor.id}
-
-  dl.dl-horizontal
-    dt id='mqtt_topic' #{sensor.mqtt_topic}
-    dd #{sensor.description}
-
-  div.col-md-7
-    button.btn.btn-secondary id="status" Status
-    button.btn.btn-danger id="delete" Destroy
   div.col-md-5
+    p id='id' #{sensor.id}
+    p #{sensor.description}
+    p id='mqtt_topic' MQTT Topic: #{sensor.mqtt_topic}
+
+    div.row.col-sm-offset-1
+      button.btn.btn-secondary id="status" Status
+      button.btn.btn-danger.col-md-offset-1 id="delete" Destroy
+  div.col-md-5.col-md-offset-2
     div.display-box id='display_box'
 
-== javascript 'show'
-== javascript 'sensors_delete_button'
+== javascript 'sensor'
+== javascript 'delete_button'

@@ -6,6 +6,7 @@ module Web::Controllers::Sensors
     params do
       required(:sensor).schema do
         required(:name).filled(:str?)
+        required(:description).filled(:str?)
         required(:mqtt_topic).filled(:str?)
       end
     end
