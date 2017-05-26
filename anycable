@@ -1,0 +1,13 @@
+require "rack"
+require "anycable"
+require "litecable"
+require_relative './config/boot'
+
+LiteCable.anycable!
+
+Anycable.configure do |config|
+  config.connection_factory = Usgard::Ws::Connection
+end
+
+Anycable::Server.start
+

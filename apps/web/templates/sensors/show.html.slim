@@ -12,5 +12,9 @@ div
   div.col-md-5.col-md-offset-2
     div.display-box id='display_box'
 
-== javascript 'sensor'
-== javascript 'delete_button'
+  == javascript 'sensor'
+
+  javascript:
+    App.sensor.init({identifier: "#{{ sensor.id }}"});
+
+

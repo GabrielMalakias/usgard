@@ -6,6 +6,8 @@ require_relative '../apps/web/application'
 
 require_relative './initializers/auto_inject'
 
+Sequel.split_symbols = true
+
 Hanami.configure do
   mount Web::Application, at: '/'
 

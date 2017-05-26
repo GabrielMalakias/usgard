@@ -1,7 +1,7 @@
 module Web::Controllers::Actuators
   class Index
     include Web::Action
-    include ::AutoInject['commands.actuator.list_all']
+    include ::AutoInject['commands.actuators.list_all']
 
     expose :actuators
 

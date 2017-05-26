@@ -26,19 +26,19 @@ module Usgard
       Commands::Sensor::Destroy.new
     end
 
-    register('commands.actuator.list_all') do
+    register('commands.actuators.list_all') do
       Commands::Actuator::ListAll.new
     end
 
-    register('commands.actuator.create') do
+    register('commands.actuators.create') do
       Commands::Actuator::Create.new
     end
 
-    register('commands.actuator.find_by_id') do
+    register('commands.actuators.find_by_id') do
       Commands::Actuator::FindById.new
     end
 
-    register('commands.actuator.destroy') do
+    register('commands.actuators.destroy') do
       Commands::Actuator::Destroy.new
     end
   end

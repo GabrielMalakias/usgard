@@ -1,20 +1,25 @@
 div
-  h1 Actuator: #{actuator.name}
-  div.col-md-5
-    p id='id' #{actuator.id}
-    p #{actuator.description}
-    p id='mqtt_topic' MQTT Topic: #{actuator.mqtt_topic}
-    div.row
-      form.form-inline
-        div.form-group
-          label for="name" Message
-          input.form-control type="text" name="msg" id="msg"
-        button.btn.btn-primary type="button" id="send" Send
-    div.row.col-sm-offset-1
-      button.btn.btn-secondary id="status" Status
-      button.btn.btn-danger.col-md-offset-1 id="delete" Destroy
-  div.col-md-5.col-md-offset-2
-    div.display-box id='display_box'
+  h1 #{actuator.name}
 
-== javascript 'actuator'
-== javascript 'delete_button'
+  p id='actuatorid' style='display: none' #{actuator.id}
+
+  dl.dl-horizontal
+    dt id='mqtt_topic' #{actuator.mqtt_topic}
+    dd #{actuator.description}
+
+  div.col-md-7
+    label Message
+  div.col-md-5
+    div.display_box id='display_box'
+    div.col-xs-offset-0.form-group
+      input.form-control id='console' type="text" name="msg"
+
+  div.row
+    button.btn.btn-secondary id="status" Status
+    button.btn.btn-danger id="delete" Destroy
+
+  == javascript 'actuator'
+
+  javascript:
+    App.sensor.init({identifier: "#{{ actuator.id }}"});
+

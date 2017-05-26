@@ -1,7 +1,7 @@
 module Web::Controllers::Actuators
   class Create
     include Web::Action
-    include ::AutoInject['commands.actuator.create']
+    include ::AutoInject['commands.actuators.create']
 
     params do
       required(:actuator).schema do
