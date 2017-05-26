@@ -1,0 +1,34 @@
+doctype html
+html.ls-theme-blue
+  head
+    title Usgard - Our garden
+    == favicon
+    == javascript 'jquery'
+    == javascript 'application'
+    == javascript 'bootstrap'
+    == javascript 'cable'
+    == javascript 'channel'
+    == stylesheet 'application'
+    == stylesheet 'bootstrap'
+
+  body
+    div.row
+      div.col-md-12
+        h1 Usgard
+    ul.nav.nav-pills
+      li role='presentation'
+        == link_to 'Home', '/'
+      li role='presentation'
+        == link_to 'Sensors', routes.sensors_path
+      li role='presentation'
+        == link_to 'Actuators', routes.actuators_path
+
+    div.container-fluid
+      div id='content'
+        == yield
+
+    div id='footer'
+      div.col-md-10
+        span Proudly powered by Hanami
+      div.col-md-2
+        span Gabriel Malaquias

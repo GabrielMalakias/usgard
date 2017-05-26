@@ -1,0 +1,19 @@
+h2 Sensor
+  | Index
+
+== link_to('New', routes.new_sensor_path)
+
+table.table
+  thead
+    tr
+      th Id
+      th Name
+      th Topic
+  tbody
+    - sensors.each do |s|
+
+      tr
+        td == sensor_link(s.id)
+        td #{s.name}
+        td #{s.mqtt_topic}
+

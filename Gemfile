@@ -1,11 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'bundler'
 gem 'rake'
-gem 'hanami',       '~> 0.9'
-gem 'hanami-model', '~> 0.7'
+gem 'hanami',       '1.0.0'
+gem 'hanami-model', '1.0.0'
 
 gem 'pg'
+gem 'puma',  '3.7.1'
+
+gem 'slim'
+gem 'dry-auto_inject'
+
+gem 'anycable', "~> 0.4.2"
+gem 'litecable'
+gem "anyway_config", "~> 0.5.0"
+gem "websocket", "~> 1.2.4"
 
 group :development do
   gem 'shotgun'
@@ -16,9 +24,5 @@ group :test, :development do
 end
 
 group :test do
-  gem 'minitest'
-end
-
-group :production do
-  gem 'puma'
+  gem 'rspec'
 end

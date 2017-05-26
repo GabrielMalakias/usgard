@@ -226,12 +226,11 @@ module Web
       #  * https://developer.mozilla.org/en-US/docs/Web/Security/CSP/CSP_policy_directives
       #
       security.content_security_policy %{
-        form-action 'self';
         frame-ancestors 'self';
         base-uri 'self';
         default-src 'none';
-        script-src 'self';
-        connect-src 'self';
+        script-src 'self' 'unsafe-inline';
+        connect-src ws: 'self';
         img-src 'self' https: data:;
         style-src 'self' 'unsafe-inline' https:;
         font-src 'self';
@@ -272,18 +271,7 @@ module Web
       # Don't handle exceptions, render the stack trace
       handle_exceptions false
 
-      # Logger
-      # See: http://hanamirb.org/guides/projects/logging
-      #
-      # Logger stream. It defaults to STDOUT.
-      # logger.stream "log/development.log"
-      #
-      # Logger level. It defaults to DEBUG
-      # logger.level :debug
-      #
-      # Logger format. It defaults to DEFAULT
-      # logger.format :default
-    end
+   end
 
     ##
     # TEST
@@ -292,12 +280,7 @@ module Web
       # Don't handle exceptions, render the stack trace
       handle_exceptions false
 
-      # Logger
-      # See: http://hanamirb.org/guides/projects/logging
-      #
-      # Logger level. It defaults to ERROR
-      logger.level :error
-    end
+   end
 
     ##
     # PRODUCTION
@@ -306,18 +289,6 @@ module Web
       # scheme 'https'
       # host   'example.org'
       # port   443
-
-      # Logger
-      # See: http://hanamirb.org/guides/projects/logging
-      #
-      # Logger stream. It defaults to STDOUT.
-      # logger.stream "log/production.log"
-      #
-      # Logger level. It defaults to INFO
-      logger.level :info
-
-      # Logger format.
-      logger.format :json
 
       assets do
         # Don't compile static assets in production mode (eg. Sass, ES6)

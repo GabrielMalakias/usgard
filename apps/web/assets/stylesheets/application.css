@@ -1,0 +1,18 @@
+#display_box {
+  background-color: #333;
+  color: #337ab7;
+  height: 300px;
+  overflow: auto;
+}
+
+.col-sm-offset-1 {
+  margin-top: 1em;
+}
+
+#console_input {
+  background-color: #333;
+  color: #337ab7;
+}
+
+
+

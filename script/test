@@ -5,13 +5,11 @@
 
 echo "==> Running tests…"
 
-./script/bootstrap
-
 if command -v docker-compose >/dev/null 2>&1; then
   if [ -n "$1" ]; then
-    docker-compose run web rake test "$1"
+    docker-compose run web rspec spec "$1"
   else
-    docker-compose run web rake test
+    docker-compose run web rspec spec
   fi
 else
   echo "==> Please install docker first"

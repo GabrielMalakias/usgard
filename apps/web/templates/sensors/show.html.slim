@@ -1,0 +1,20 @@
+div
+  h1 #{sensor.name}
+
+  div.col-md-5
+    p id='id' #{sensor.id}
+    p #{sensor.description}
+    p id='mqtt_topic' MQTT Topic: #{sensor.mqtt_topic}
+
+    div.row.col-sm-offset-1
+      button.btn.btn-secondary id="status" Status
+      button.btn.btn-danger.col-md-offset-1 id="delete" Destroy
+  div.col-md-5.col-md-offset-2
+    div.display-box id='display_box'
+
+  == javascript 'sensor'
+
+  javascript:
+    App.sensor.init({identifier: "#{{ sensor.id }}"});
+
+
