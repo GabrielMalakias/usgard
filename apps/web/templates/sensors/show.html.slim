@@ -1,16 +1,36 @@
-div
-  h1 #{sensor.name}
+div.row
+  div.card.col.s8.z-depth-4
+    div.card-content
+      div.row
+        div.col.s1
+          i.material-icons.right perm_identity
+        div.col.s10
+          span.card-title.teal-text #{sensor.name}
+        div.col.s1
+          a href=routes.edit_sensor_path(sensor.id)
+            i.material-icons.teal-text.darken-2
+              | edit
+      div.row
+        div.col.s1
+          i.material-icons.right comment
+        div.col.s11
+          p.grey-text.darken-4-text #{sensor.description}
+      div.row
+        div.col.s1
+          i.material-icons.right perm_data_setting
+        div.col.s11
+          p.grey-text.darken-4-text #{sensor.topic}
+      div.row
+        div.col.s1
+          i.material-icons.right visibility
+        div.col.s11
+          p.grey-text.darken-4-text #{sensor.visible}
 
-  div.col-md-5
-    p id='id' #{sensor.id}
-    p #{sensor.description}
-    p id='mqtt_topic' MQTT Topic: #{sensor.mqtt_topic}
 
-    div.row.col-sm-offset-1
-      button.btn.btn-secondary id="status" Status
-      button.btn.btn-danger.col-md-offset-1 id="delete" Destroy
-  div.col-md-5.col-md-offset-2
-    div.display-box id='display_box'
+  div.card.col.s2.offset-s2.z-depth-4.teal.darken-4.center-align
+   div.card-content
+     span.card-title.white-text id='status_indicator' '-'
+     p.grey-text.darken-4-text Current value
 
   == javascript 'sensor'
 

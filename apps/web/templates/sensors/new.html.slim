@@ -1,4 +1,11 @@
-h2 Sensor | New
-
-div.col-sm-10
-  == form
+div.row
+ col.s12
+   div.card
+     div.card-content
+       span.card-title
+         | New sensor
+       div.row
+         == render_error(params.error_messages) unless params.valid?
+         == form
+     div.card-action
+       == link_to('Back', routes.sensors_path, class: 'teal-text text-lighten-1')

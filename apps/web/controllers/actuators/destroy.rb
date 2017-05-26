@@ -1,7 +1,7 @@
 module Web::Controllers::Actuators
   class Destroy
     include Web::Action
-    include ::AutoInject['commands.actuator.destroy']
+    include ::AutoInject['commands.actuators.destroy']
 
     params do
       required(:id).filled(:str?)

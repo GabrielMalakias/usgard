@@ -1,7 +1,7 @@
 module Web::Controllers::Sensors
   class Destroy
     include Web::Action
-    include ::AutoInject['commands.sensor.destroy']
+    include ::AutoInject['commands.sensors.destroy']
 
     params do
       required(:id).filled(:str?)

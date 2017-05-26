@@ -7,10 +7,11 @@ module Web::Controllers::Actuators
       required(:actuator).schema do
         required(:name).filled(:str?)
         required(:description).filled(:str?)
-        required(:mqtt_topic).filled(:str?)
+        required(:topic).filled(:str?)
+        required(:type).filled(:str?)
+        required(:visible).filled(:bool?)
       end
     end
-
 
     def call(params)
       if params.valid?
@@ -18,6 +19,7 @@ module Web::Controllers::Actuators
 
         redirect_to routes.actuator_path(id: actuator.id)
       else
+        self.status = 422
       end
     end
   end
