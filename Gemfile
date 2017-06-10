@@ -10,6 +10,7 @@ gem 'puma',  '3.7.1'
 gem 'slim'
 gem 'dry-auto_inject'
 
+gem 'em-mqtt'
 gem 'anycable', "~> 0.4.2"
 gem 'litecable'
 gem "anyway_config", "~> 0.5.0"

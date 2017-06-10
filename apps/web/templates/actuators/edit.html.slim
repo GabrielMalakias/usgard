@@ -1,0 +1,11 @@
+div.row
+ col.s12
+   div.card
+     div.card-content
+       span.card-title
+         | Editing actuator - #{actuator.name}
+       div.row
+          == render_error(params.error_messages) unless params.valid?
+          == form
+     div.card-action
+       == link_to('Back', routes.actuators_path, class: 'teal-text lighten-1-text')

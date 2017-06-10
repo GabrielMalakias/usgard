@@ -22,6 +22,7 @@ App.channel = (function() {
   }
 
   return {
-    init: init
+    init: init,
+    createCable: createCable
   }
 }());

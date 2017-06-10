@@ -229,11 +229,11 @@ module Web
         frame-ancestors 'self';
         base-uri 'self';
         default-src 'none';
-        script-src 'self' 'unsafe-inline';
-        connect-src ws: 'self';
+        script-src 'self' 'unsafe-inline' https:;
+        connect-src 'self' ws:;
         img-src 'self' https: data:;
-        style-src 'self' 'unsafe-inline' https:;
-        font-src 'self';
+        style-src 'self' 'unsafe-inline' http:;
+        font-src self data: http:;
         object-src 'none';
         plugin-types application/pdf;
         child-src 'self';

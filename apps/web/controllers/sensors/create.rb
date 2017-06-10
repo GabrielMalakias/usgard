@@ -1,17 +1,16 @@
 module Web::Controllers::Sensors
   class Create
     include Web::Action
-    include ::AutoInject['commands.sensor.create']
+    include ::AutoInject['commands.sensors.create']
 
     params do
       required(:sensor).schema do
         required(:name).filled(:str?)
         required(:description).filled(:str?)
-        required(:mqtt_topic).filled(:str?)
+        required(:topic).filled(:str?)
+        required(:visible).filled(:bool?)
       end
     end
-
-    handle_exception ArgumentError => 422
 
     def call(params)
       if params.valid?
@@ -19,7 +18,7 @@ module Web::Controllers::Sensors
 
         redirect_to routes.sensor_url(id: sensor.id)
       else
-        raise ::ArgumentError, params.errors
+        self.status = 422
       end
     end
   end

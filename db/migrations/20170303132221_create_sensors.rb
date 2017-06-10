@@ -1,11 +1,16 @@
 Hanami::Model.migration do
   change do
+    execute 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"'
+
     create_table :sensors do
       primary_key :id
 
       column :name,         String
       column :description,  String
-      column :mqtt_topic,  String
+      column :topic,        String
+      column :visible,      TrueClass
+
+      column :token, 'uuid', null: false, default: Hanami::Model::Sql.function(:uuid_generate_v4)
 
       column :created_at, DateTime, null: false
       column :updated_at, DateTime, null: false
