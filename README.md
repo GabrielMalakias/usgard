@@ -23,10 +23,9 @@
 ./script/test
 ```
 
-## Running mqtt server
-
+## Monitoring stats
 ``` sh
-docker run -ti -p 1883:1883 -p 9001:9001 toke/mosquitto
+docker stats --format "table {{.Container}}\t{{.Name}}\t{{.MemUsage}}\t{{.CPUPerc}}\t{{.NetIO}}\t{{.BlockIO}}"
 ```
 
 ## Maintainers

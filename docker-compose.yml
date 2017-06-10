@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_DB: usgard_development
+      POSTGRES_DB: usgard
       POSTGRES_USER: usgard
       POSTGRES_PASSWORD: initial123
   redis:
@@ -18,6 +18,20 @@ services:
       - "2300:2300"
     depends_on:
       - db
+      - mqtt
+  subscriber:
+    build: .
+    command: bundle exec ruby subscriber
+    volumes:
+      - .:/usgard
+    env_file:
+      - .env.development
+    environment:
+      - ANYCABLE_REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+      - db
+      - mqtt
   rpc:
     build: .
     command: bundle exec ruby anycable
@@ -31,6 +45,7 @@ services:
     depends_on:
       - redis
       - db
+      - mqtt
   anycable:
     image: 'anycable/anycable-go:0.3'
     ports:
@@ -42,5 +57,10 @@ services:
     depends_on:
       - redis
       - rpc
+  mqtt:
+    image: 'toke/mosquitto'
+    ports:
+      - "1883:1883"
+      - "9001:9001"
 
 

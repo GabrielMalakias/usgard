@@ -1,5 +1,5 @@
 App.sensor = (function() {
-  var config = { container: "display_box", channel: "actuator", user: "usgard", socket: null };
+  var config = { container: "display_box", channel: "actuator", user: "usgard", socket: null, statusIndicator: '#status_indicator' };
 
   function init(configuration) {
     config =  Object.assign({}, config, configuration);
@@ -31,14 +31,17 @@ App.sensor = (function() {
 
   // These functions will be evaluated when cable trigger the subscriptions
   function onDisconnected() {
+    Materialize.toast('Connection Lost', 4000);
     appendMessageToBox({ user: 'system', message: "Connection Lost", system: true });
   }
 
   function onReceive(data) {
+    getActuatorStatus().text(data.message);
     appendMessageToBox(data);
   }
 
   function onConnected() {
+    Materialize.toast('Connection Established', 4000);
     appendMessageToBox({ user: 'system', message: "Connection Established", system: true });
   }
 
@@ -56,7 +59,7 @@ App.sensor = (function() {
 
   function createMessageNode(incomingMessage) {
     var node = document.createElement('div');
-    node.innerHTML = '<div class="txt">' + incomingMessage + '</div>';
+    node.innerHTML = '<span class="teal-text accent-4-text">' + incomingMessage + '</span>';
     return node;
   }
 
@@ -64,8 +67,16 @@ App.sensor = (function() {
     return document.getElementById(config.container);
   }
 
+  function setActuatorStatus() {
+    getActuatorStatus().text(incomingMessage.message);
+  }
+
+  function getActuatorStatus() {
+    return $(config.statusIndicator);
+  }
+
   function appendMessageToBox(incomingMessage) {
-    getMessageBoxElement().appendChild(createMessageNode(incomingMessage.message));
+    getMessageBoxElement().prepend(createMessageNode(incomingMessage.message));
   }
 
   function getConsoleInput() {

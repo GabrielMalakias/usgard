@@ -10,4 +10,3 @@ Anycable.configure do |config|
 end
 
 Anycable::Server.start
-

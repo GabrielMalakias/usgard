@@ -3,32 +3,24 @@ html.ls-theme-blue
   head
     title Usgard - Our garden
     == favicon
-    == javascript 'jquery'
+
     == javascript 'application'
-    == javascript 'bootstrap'
     == javascript 'cable'
     == javascript 'channel'
     == stylesheet 'application'
-    == stylesheet 'bootstrap'
+
+    script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+    link href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css' rel='stylesheet'
+    link href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css' rel='stylesheet'
+
 
   body
-    div.row
-      div.col-md-12
-        h1 Usgard
-    ul.nav.nav-pills
-      li role='presentation'
-        == link_to 'Home', '/'
-      li role='presentation'
-        == link_to 'Sensors', routes.sensors_path
-      li role='presentation'
-        == link_to 'Actuators', routes.actuators_path
+    == render partial: 'shared/menu'
 
-    div.container-fluid
-      div id='content'
+    div.container
+     div.row
         == yield
 
-    div id='footer'
-      div.col-md-10
-        span Proudly powered by Hanami
-      div.col-md-2
-        span Gabriel Malaquias
+    == render partial: 'shared/footer'

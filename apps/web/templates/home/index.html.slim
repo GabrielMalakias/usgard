@@ -1,5 +1,29 @@
+== javascript 'dashboard'
 
-h1 Home \o/
+div.row
+ col.s12
+   div.card
+     div.card-content
+       span.card-title
+         | Actuators
+       div.row
+         - actuators.each do |a|
+            javascript:
+              App.dashboard.addIdentifier(#{a.id}, 'actuator');
+            == actuator_card(a)
 
+div.row
+ col.s12
+   div.card
+     div.card-content
+       span.card-title
+         | Sensor
+       div.row
+         - sensors.each do |s|
+            javascript:
+              App.dashboard.addIdentifier(#{s.id}, 'sensor');
+            == sensor_card(s)
 
-<%= test %>
+javascript:
+  App.dashboard.init();
+

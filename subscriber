@@ -1,0 +1,20 @@
+require "rack"
+require "anycable"
+require "litecable"
+require 'mqtt'
+#require_relative './config/boot'
+
+LiteCable.anycable!
+
+client = MQTT::Client.connect(host: 'mqtt', port: 1883)
+
+client.subscribe("sensor/#")
+client.subscribe("actuator/#")
+
+client.get do |topic, message|
+  topic = topic.gsub('/', '_')
+  LiteCable.broadcast topic, user: 'external', message: message, sid: Random.rand(1..99999)
+end
+
+
+

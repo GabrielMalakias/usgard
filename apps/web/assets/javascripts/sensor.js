@@ -1,5 +1,5 @@
 App.sensor = (function() {
-  var config = { container: "display_box", channel: "sensor", user: "usgard" };
+  var config = { container: "status_indicator", channel: "sensor", user: "usgard" };
 
   function init(configuration) {
     config =  Object.assign({}, config, configuration);
@@ -19,30 +19,26 @@ App.sensor = (function() {
 
   // These functions will be evaluated when cable trigger the subscriptions
   function onDisconnected() {
-    appendMessageToBox({ user: 'system', message: "Connection Lost", system: true });
+    appendMessageToBox('Down');
+    Materialize.toast('Connection Lost', 4000);
   }
 
-  function onReceive() {
-    appendMessageToBox(data);
+  function onReceive(data) {
+    appendMessageToBox(data.message);
   }
 
   function onConnected() {
-    appendMessageToBox({ user: 'system', message: "Connection Established", system: true });
+    appendMessageToBox('Waiting');
+    Materialize.toast('Connection Established', 4000);
   }
 
   // Create HTML elements
-  function createMessageNode(incomingMessage) {
-    var node = document.createElement('div');
-    node.innerHTML = '<div class="txt">' + incomingMessage + '</div>';
-    return node;
-  }
-
-  function getMessageBoxElement() {
-    return document.getElementById(config.container);
+  function getStatusBoxElement() {
+    return $('#' + config.container);
   }
 
   function appendMessageToBox(incomingMessage) {
-    getMessageBoxElement().appendChild(createMessageNode(incomingMessage.message));
+    getStatusBoxElement().text(incomingMessage);
   }
 
   return {

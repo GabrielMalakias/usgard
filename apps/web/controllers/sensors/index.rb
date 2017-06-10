@@ -1,12 +1,12 @@
 module Web::Controllers::Sensors
   class Index
     include Web::Action
-    include ::AutoInject['commands.sensor.list_all']
+    include ::AutoInject['commands.sensors.list_all']
 
     expose :sensors
 
     def call(params)
-      @sensors = list_all.()
+      @sensors = Array(list_all.())
     end
   end
 end
