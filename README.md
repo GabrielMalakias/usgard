@@ -1,7 +1,20 @@
 # Usgard
 
+```
+   _/    _/                                                _/
+  _/    _/    _/_/_/    _/_/_/    _/_/_/  _/  _/_/    _/_/_/
+ _/    _/  _/_/      _/    _/  _/    _/  _/_/      _/    _/
+_/    _/      _/_/  _/    _/  _/    _/  _/        _/    _/
+ _/_/    _/_/_/      _/_/_/    _/_/_/  _/          _/_/_/
+                        _/
+                   _/_/
+```
+
+> Asgard is located in the sky and is connected to Midgard, the world of humanity, by the rainbow bridge Bifrost - Norse-Mythology.org
+
+
 ## Overview
-> The Hanami application to show status(like temperature, luminosity...) and execute commands (turn on the light, for example) through a MQTT server.
+Usgard(Us + Asgard) is responsible for show status(like temperature, luminosity...) and execute commands (turn on the light, for example) through the Bitfrost.
 
 ![alt text](http://gabrielmalakias.com.br/assets/images/usgard_perspective.png "Usgard")
 
