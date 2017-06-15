@@ -57,6 +57,10 @@ module Usgard
     register('commands.actuators.destroy') do
       Commands::Actuator::Destroy.new
     end
+
+    register('mqtt.client') do
+      MQTT::Client.connect(host: 'mqtt', port: 1883)
+    end
   end
 end
 
