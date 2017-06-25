@@ -1,0 +1,21 @@
+[Unit]
+Description=PostgreSQL
+After=network.target
+
+[Service]
+Type=forking
+
+User=postgres
+Group=postgres
+
+Environment=PGSTARTTIMEOUT=270
+Environment=PGDATA=/usr/local/pgsql/data
+
+ExecStart=/usr/local/pgsql/bin/pg_ctl start -D ${PGDATA} -s -w -t ${PGSTARTTIMEOUT}
+ExecStop=/usr/local/pgsql/bin/pg_ctl stop -D ${PGDATA} -s -m fast
+ExecReload=/usr/local/pgsql/bin/pg_ctl reload -D ${PGDATA} -s
+
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target

@@ -7,6 +7,7 @@ describe Web::Controllers::Home::Index do
 
   it 'is successful' do
     response = action.call(params)
-    response[0].must_equal 200
+
+    expect(response[0]).to be 200
   end
 end

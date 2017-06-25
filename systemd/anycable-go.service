@@ -1,0 +1,16 @@
+[Unit]
+Description=Anycable
+After=network.target
+
+[Service]
+Type=service
+User=root
+Group=root
+WorkingDirectory=/var/www/anycable
+ExecStart=/usr/bin/bash -lc 'anycable-go -rpc=0.0.0.0:50051 -redis=redis://localhost:6379/5 -redis_channel=anycable -addr=0.0.0.0:8080 -log'
+TimeoutSec=30
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

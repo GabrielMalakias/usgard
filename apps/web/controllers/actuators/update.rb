@@ -1,7 +1,12 @@
 module Web::Controllers::Actuators
   class Update
     include Web::Action
+    include Web::Authentication
     include ::AutoInject['commands.actuators.update', 'commands.actuators.find_by_id']
+
+    before :authenticate!
+
+    expose :actuator
 
     params do
       required(:actuator).schema do
@@ -12,8 +17,6 @@ module Web::Controllers::Actuators
         required(:visible).filled(:bool?)
       end
     end
-
-    expose :actuator
 
     def call(params)
       @actuator = find_by_id.(params.get(:id))

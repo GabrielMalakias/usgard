@@ -1,7 +1,10 @@
 module Web::Controllers::Sensors
   class Index
     include Web::Action
+    include Web::Authentication
     include ::AutoInject['commands.sensors.list_all']
+
+    before :authenticate!
 
     expose :sensors
 

@@ -1,0 +1,21 @@
+[Unit]
+Description=UsgardWeb
+After=network.target
+Requires=redis.service
+Requires=postgresql.service
+Requires=anycable.service
+Requires=rpc.service
+Requires=subscriber.service
+
+[Service]
+Type=service
+User=root
+Group=root
+WorkingDirectory=/var/www/usgard
+ExecStart=/usr/bin/bash -lc 'bundle exec hanami server'
+TimeoutSec=30
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

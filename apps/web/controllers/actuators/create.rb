@@ -1,7 +1,12 @@
+require_relative '../authentication'
+
 module Web::Controllers::Actuators
   class Create
     include Web::Action
+    include Web::Authentication
     include ::AutoInject['commands.actuators.create']
+
+    before :authenticate!
 
     params do
       required(:actuator).schema do
