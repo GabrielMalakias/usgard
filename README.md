@@ -1,5 +1,3 @@
-# Usgard
-
 ![Usgard](http://gabrielmalakias.com.br/assets/images/usgard_logo_black.png "Usgard")
 
 > Asgard is located in the sky and is connected to Midgard, the world of humanity, by the rainbow bridge Bifrost - Norse-Mythology.org
@@ -8,7 +6,7 @@
 ## Overview
 Usgard(Us + Asgard) is responsible for show status(like temperature, luminosity...) and execute commands (turn on the light, for example) through the Bitfrost.
 
-![alt text](http://gabrielmalakias.com.br/assets/images/usgard_perspective.png "Usgard")
+![Usgard architecture](http://gabrielmalakias.com.br/assets/images/usgard_detailed_architecture.png "Usgard Architecture")
 
 ## Dependencies
 * Ruby(2.4.0)
