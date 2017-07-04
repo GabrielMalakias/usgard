@@ -1,13 +1,6 @@
 # Usgard
 
-```
-_____  __                            _________
-__  / / /_____________ ______ _____________  /
-_  / / /__  ___/_  __ `/  __ `/_  ___/  __  /
-/ /_/ / _(__  )_  /_/ // /_/ /_  /   / /_/ /
-\____/  /____/ _\__, / \__,_/ /_/    \__,_/
-
-```
+![Usgard](http://gabrielmalakias.com.br/assets/images/usgard_logo_black.png "Usgard")
 
 > Asgard is located in the sky and is connected to Midgard, the world of humanity, by the rainbow bridge Bifrost - Norse-Mythology.org
 
