@@ -4,6 +4,8 @@ module Web::Controllers::Sensors
     include ::AutoInject['commands.sensors.update', 'commands.sensors.find_by_id']
 
     params do
+      required(:id).filled
+
       required(:sensor).schema do
         required(:name).filled(:str?)
         required(:description).filled(:str?)
@@ -17,15 +19,17 @@ module Web::Controllers::Sensors
     def call(params)
       @sensor = find_by_id.(params.get(:id))
 
-      if params.valid?
-        update.(params.get(:id), params.get(:sensor))
+      if params.valid? && !@sensor.nil?
+        update.(params.get(:id), sensor_params(params))
 
         redirect_to routes.sensor_url(id: params.get(:id))
       else
         self.status = 422
       end
     end
+
+    def sensor_params(params)
+      @sensor_params ||= params.get(:sensor)
+    end
   end
 end
-
-

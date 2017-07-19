@@ -7,6 +7,8 @@ module Web::Controllers::Sensors
 
     def call(params)
       @sensor = find_by_id.(params.get(:id))
+
+      halt 404 if @sensor.nil?
     end
   end
 end
