@@ -1,7 +1,10 @@
 module Web::Controllers::Sensors
   class Create
     include Web::Action
+    include Web::Authentication
     include ::AutoInject['commands.sensors.create']
+
+    before :authenticate!
 
     params do
       required(:sensor).schema do

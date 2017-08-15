@@ -16,6 +16,12 @@ gem 'litecable'
 gem "anyway_config", "~> 0.5.0"
 gem "websocket", "~> 1.2.4"
 
+gem 'omniauth-github'
+gem 'warden'
+
+gem 'scrypt'
+gem 'omniauth-hanami'
+
 group :development do
   gem 'shotgun'
 end

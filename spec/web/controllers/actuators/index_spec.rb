@@ -1,6 +1,6 @@
 require 'spec_helper'
 require_relative '../../../../apps/web/controllers/actuators/index'
-require_relative '../../../../lib/usgard/commands/actuators/list_all'
+require_relative '../../../../lib/usgard/commands/actuator/list_all'
 
 describe Web::Controllers::Actuators::Index do
   let(:action) { described_class.new(list_all: list_all) }
