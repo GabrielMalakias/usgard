@@ -10,11 +10,17 @@ gem 'puma',  '3.7.1'
 gem 'slim'
 gem 'dry-auto_inject'
 
-gem 'em-mqtt'
+gem 'mqtt'
 gem 'anycable', "~> 0.4.2"
 gem 'litecable'
 gem "anyway_config", "~> 0.5.0"
 gem "websocket", "~> 1.2.4"
+
+gem 'omniauth-github'
+gem 'warden'
+
+gem 'scrypt'
+gem 'omniauth-hanami'
 
 group :development do
   gem 'shotgun'

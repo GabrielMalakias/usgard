@@ -1,16 +1,18 @@
+require 'rubygems'
 require 'mqtt'
 
-queue = %w(sensor actuator)
-ids = 0...10
-
 MQTT::Client.connect(host: 'localhost', port: 1883) do |c|
+  while true
+    (0..4).to_a.sample.tap do |id|
+      c.publish("actuator/#{id}", Random.rand(10000))
+    end
 
-  while(true)
-    value = "#{queue.sample}/#{ids.to_a.sample}"
-    puts value
+    (0..4).to_a.sample.tap do |id|
+      c.publish("sensor/#{id}", Random.rand(10000))
+    end
 
-    c.publish(value, Random.rand(1...99999))
-
-    sleep(0.03)
+    sleep(0.2)
   end
 end
+
+

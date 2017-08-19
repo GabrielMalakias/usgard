@@ -18,7 +18,8 @@ module Web
       #
       load_paths << [
         'controllers',
-        'views'
+        'views',
+        'interactors'
       ]
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
@@ -72,13 +73,21 @@ module Web
       # Argument: Symbol the Rack session adapter
       #           A Hash with options
       #
-      # See: http://www.rubydoc.info/gems/rack/Rack/Session/Cookie
-      #
-      # sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
+      # See: http://www.rubydoc.info/gems/rack/Rack/Session/Cookie #
+      sessions :cookie, secret: ENV['WEB_SESSIONS_SECRET']
 
       # Configure Rack middleware for this application
       #
       # middleware.use Rack::Protection
+      #
+      #
+      middleware.use Warden::Manager do |manager|
+        # manager.failure_app = Web::Controllers::Session::Failure.new
+      end
+      middleware.use OmniAuth::Builder do
+        provider :hanami, repository: UserRepository, interactor: FindUserForAuth
+        provider :github, ENV['GH_CLIENT_ID'], ENV['GH_CLIENT_SECRET'], scope: 'user:email'
+      end
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, default to :html

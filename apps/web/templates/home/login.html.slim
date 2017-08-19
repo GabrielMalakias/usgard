@@ -1,0 +1,13 @@
+- if current_user
+  div.row.col.s4.offset-s4
+    h3.collection-item.green-text.text-darken-4
+     | You are signed in!
+    p User: #{current_user.name}
+    == link_to('Home', '/', class: 'btn teal darken-4')
+- else
+    div.row.col.s4.offset-s4
+      h3.collection-item.red-text.text-darken-4
+        | You need to sign in to continue
+      div.row
+      == link_to('Sign In', '/sign_in', class: 'btn teal darken-4')
+      == link_to('Sign Up', '/users/new', class: 'btn grey')
