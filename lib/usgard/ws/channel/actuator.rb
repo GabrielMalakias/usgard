@@ -22,7 +22,7 @@ module Usgard
       private
 
       def send_to_mqtt(message)
-        @client ||= MQTT::Client.connect(host: 'mqtt', port: 1883)
+        @client ||= MQTT::Client.connect(host: ENV['MQTT_HOST'], username: ENV['MQTT_USER'], password: ENV['MQTT_PASSWORD'], port: ENV['MQTT_PORT'])
 
         @client.publish("actuator/#{actuator_id}/send", message)
       end
