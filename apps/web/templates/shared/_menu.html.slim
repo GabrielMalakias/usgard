@@ -2,7 +2,7 @@ nav.teal.darken-4
   div.nav-wrapper
     a.brand-logo href='/'
       i.material-icons
-        | perm_data_setting
+        | ac_unit
       | Usgard
     ul.right.hide-on-med-and-down
       li
@@ -21,4 +21,11 @@ nav.teal.darken-4
         a href='/'
           i.material-icons
             | settings
+      li.grey
+        a href='#'
+          | #{current_user.name}
+      li.grey
+        a href='/logout'
+          i.material-icons
+            | close
 

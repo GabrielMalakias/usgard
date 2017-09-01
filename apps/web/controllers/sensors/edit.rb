@@ -1,7 +1,10 @@
 module Web::Controllers::Sensors
   class Edit
     include Web::Action
+    include Web::Authentication
     include ::AutoInject['commands.sensors.find_by_id']
+
+    before :authenticate!
 
     expose :sensor
 

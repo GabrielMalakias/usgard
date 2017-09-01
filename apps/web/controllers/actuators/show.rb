@@ -1,7 +1,10 @@
 module Web::Controllers::Actuators
   class Show
     include Web::Action
+    include Web::Authentication
     include ::AutoInject['commands.actuators.find_by_id']
+
+    before :authenticate!
 
     expose :actuator
 

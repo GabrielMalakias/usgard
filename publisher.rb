@@ -1,19 +1,21 @@
 require "rack"
 require "anycable"
 require "litecable"
+require 'rubygems'
 require 'mqtt'
-#require_relative './config/boot'
 
-LiteCable.anycable!
+MQTT::Client.connect(host: 'localhost', port: 1883) do |c|
+  while true
+    (0..4).to_a.sample.tap do |id|
+      c.publish("actuator/#{id}", Random.rand(10000))
+    end
 
-client = MQTT::Client.connect(host: 'localhost', port: 1883)
+    (0..4).to_a.sample.tap do |id|
+      c.publish("sensor/#{id}", Random.rand(10000))
+    end
 
-
-while true
-
-  client.publish('actuator/2', ['on', 'off'].sample)
-  client.publish('sensor/1', Random.rand(20))
-
-  sleep(0.500)
-
+    sleep(0.2)
+  end
 end
+
+

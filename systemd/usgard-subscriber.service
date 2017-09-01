@@ -1,0 +1,18 @@
+[Unit]
+Description=UsgardSubscriber
+After=network.target
+Requires=redis.service
+
+[Service]
+Type=simple
+User=usgard-master
+Group=usgard-master
+WorkingDirectory=/var/www/usgard-master
+ExecStart=/bin/bash -lc 'bundle exec ruby subscriber'
+TimeoutSec=30
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

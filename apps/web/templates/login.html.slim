@@ -1,0 +1,20 @@
+doctype html
+html.ls-theme-blue
+  head
+    title Login - Usgard
+
+    script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+    link href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css' rel='stylesheet'
+    link href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css' rel='stylesheet'
+
+  body
+    div.container
+     div.row
+       div.col.s12
+         div.col.s4.offset-s4
+           img src='/assets/usgard_logo_black.png'
+         == yield
+
+
