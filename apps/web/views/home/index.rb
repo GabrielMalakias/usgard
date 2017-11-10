@@ -1,9 +1,15 @@
+require_relative '../actuators/action'
+
 module Web::Views::Home
   class Index
     include Web::View
+    include Web::Views::Actuators::Action
 
     def actuator_card(actuator)
       html.div(class: 'col s4 z-depth-1 card') do
+        div(class: 'card-image') do
+          img(src: '/assets/usgard_logo_black.png')
+        end
         div(class: 'card-content') do
           span(class: 'card-title activator') do
             span(id: "actuator#{actuator.id}", class: 'teal-text')
@@ -24,12 +30,7 @@ module Web::Views::Home
           end
 
           div(class: 'card-content') do
-            div(class: 'row input-field') do
-              i(class: 'material-icons prefix') do
-                'message'
-              end
-              input(class: 'validate', id: "console#{actuator.id}")
-            end
+            render_action(actuator)
           end
         end
       end

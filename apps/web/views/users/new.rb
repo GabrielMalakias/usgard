@@ -5,7 +5,7 @@ module Web::Views::Users
     layout :login
 
     def form
-      form_for :user, routes.register_path, class: 'col s4 offset-s4' do
+      form_for :user, routes.register_path do
         div class: 'row input-field' do
           label :name
           text_field :name
