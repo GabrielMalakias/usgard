@@ -3,7 +3,7 @@ sudo: required
 install:
 
 before_script:
-  - docker build -t GabrielMalakias/usgard
-  - docker run -d 127.0.0.1:80:2300 -b 0.0.0.0 GabrielMalakias/usgard /bin/sh -c "bundle exec rspec spec"
+  - docker build -t gabrielmalakias/usgard
+  - docker run -d 127.0.0.1:80:2300 -b 0.0.0.0 gabrielmalakias/usgard /bin/sh -c "bundle exec rspec spec"
 script:
   - bundle exec rspec spec
