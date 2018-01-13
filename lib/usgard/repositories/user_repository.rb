@@ -11,6 +11,7 @@ class UserRepository < Hanami::Repository
     info = auth_hash[:info]
     external_id = auth_hash[:uid]
     provider = auth_hash[:provider]
+
     attrs = {
       name:   info[:name],
       email:  info[:email],
