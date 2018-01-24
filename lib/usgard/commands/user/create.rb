@@ -14,13 +14,14 @@ module Usgard
           {
             name: params[:name],
             email: params[:email],
-            credentials:           }
+            credentials: build_credentials_params(params[:password])
+          }
         end
 
-        def build_credentials_params(params)
+        def build_credentials_params(password)
           [{
-            crypted_password: password.encrypt(params[:password]),
-             provider: Usgard.to_s }]
+            crypted_password: password.encrypt(password),
+            provider: Usgard.to_s }]
         end
       end
     end

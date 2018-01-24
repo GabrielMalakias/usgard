@@ -1,7 +1,7 @@
 module Usgard
   module Commands
     module User
-      module Password
+      class Password
         class Crypt
           def call(user)
             SCrypt::Password.new(first_user_credentials(user))

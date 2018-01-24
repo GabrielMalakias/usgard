@@ -2,7 +2,7 @@ require 'spec_helper'
 require_relative '../../../../apps/web/controllers/sensors/edit'
 require_relative '../../../../lib/usgard/commands/sensor/find_by_id'
 
-describe Web::Controllers::Sensors::Edit do
+describe Web::Controllers::Sensors::Edit, type: :controller do
   let(:action) { described_class.new(find_by_id: find_by_id) }
   let(:sensor) { Sensor.new }
   let(:id) { '10' }
@@ -10,6 +10,10 @@ describe Web::Controllers::Sensors::Edit do
 
   let(:params) do
     { id: id }
+  end
+
+  before do
+    stub_current_user!
   end
 
   context 'when has a result' do

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Usgard::Commands::Sensor::Destroy do
-  let(:instance) { described_class.new(repository: repository }
+  let(:instance) { described_class.new(repository: repository) }
   let(:repository) { double(SensorRepository) }
 
   describe '#call' do

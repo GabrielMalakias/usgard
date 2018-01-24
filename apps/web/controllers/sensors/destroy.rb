@@ -14,7 +14,7 @@ module Web::Controllers::Sensors
       if params.valid?
         destroy.(params.get(:id))
       else
-        self.status = 422
+        halt 422
       end
     end
   end

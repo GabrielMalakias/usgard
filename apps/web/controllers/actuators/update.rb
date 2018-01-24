@@ -9,6 +9,7 @@ module Web::Controllers::Actuators
     expose :actuator
 
     params do
+      required(:id).filled(:str?)
       required(:actuator).schema do
         required(:name).filled(:str?)
         required(:description).filled(:str?)

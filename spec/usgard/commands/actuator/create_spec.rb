@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Usgard::Commands::Actuator::Create do
-  let(:instance) { described_class.new(repository: repository }
+  let(:instance) { described_class.new(repository: repository) }
   let(:repository) { double(ActuatorRepository) }
 
   describe '#call' do

@@ -14,4 +14,4 @@ describe Usgard::Commands::Sensor::ListAll do
       expect(subject).to eq([actuator])
     end
   end
-e
+end

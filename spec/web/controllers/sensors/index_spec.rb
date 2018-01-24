@@ -2,13 +2,17 @@ require 'spec_helper'
 require_relative '../../../../apps/web/controllers/sensors/index'
 require_relative '../../../../lib/usgard/commands/sensor/list_all'
 
-describe Web::Controllers::Sensors::Index do
+describe Web::Controllers::Sensors::Index, type: :controller do
   let(:action) { described_class.new(list_all: list_all) }
   let(:all) { [Sensor.new, Sensor.new] }
   let(:id) { '10' }
   let(:list_all) { double(Usgard::Commands::Sensor::ListAll) }
 
   let(:params) { Hash[] }
+
+  before do
+    stub_current_user!
+  end
 
   context 'when has a result' do
     before do

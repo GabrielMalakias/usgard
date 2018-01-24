@@ -10,6 +10,8 @@ module Web::Controllers::Actuators
 
     def call(params)
       @actuator = find_by_id.(params.get(:id))
+
+      halt 404 if @actuator.nil?
     end
   end
 end

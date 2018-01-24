@@ -10,12 +10,14 @@ module Web
       @current_user ||= warden.user
     end
 
-    def warden
-      request.env['warden']
-    end
-
     def authenticate!
       redirect_to routes.login_path if current_user.nil?
+    end
+
+    private
+
+    def warden
+      request.env['warden']
     end
   end
 end

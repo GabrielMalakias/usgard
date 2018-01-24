@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Usgard::Commands::Sensor::Update do
-  let(:instance) { described_class.new(repository: repository }
+  let(:instance) { described_class.new(repository: repository) }
   let(:repository) { double(SensorRepository) }
 
   describe '#call' do
@@ -11,7 +11,7 @@ describe Usgard::Commands::Sensor::Update do
         { name: 'Light Sensor' }
       end
 
-      subject { instance.(params) }
+      subject { instance.(id, params) }
 
       it 'delegates to the sensor repository' do
         expect(repository).to receive(:update).with(id, params).once

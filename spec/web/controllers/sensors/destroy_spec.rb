@@ -1,8 +1,12 @@
 require 'spec_helper'
 require_relative '../../../../apps/web/controllers/sensors/destroy'
 
-describe Web::Controllers::Sensors::Destroy do
+describe Web::Controllers::Sensors::Destroy, type: :controller do
   let(:action) { described_class.new }
+
+  before do
+    stub_current_user!
+  end
 
   context 'when is successful' do
     let(:params) do

@@ -1,8 +1,12 @@
 require 'spec_helper'
 require_relative '../../../../apps/web/controllers/actuators/destroy'
 
-describe Web::Controllers::Actuators::Destroy do
+describe Web::Controllers::Actuators::Destroy, type: :controller do
   let(:action) { described_class.new }
+
+  before do
+    stub_current_user!
+  end
 
   context 'when is successful' do
     let(:params) do
@@ -22,7 +26,7 @@ describe Web::Controllers::Actuators::Destroy do
     end
 
     it 'status is 422' do
-      response = action.call(params)
+      response = action.call({})
 
       expect(response[0]).to eq 422
     end
