@@ -17,7 +17,7 @@ module Web::Views::Users
         end
 
         div(class: 'row')  do
-          submit 'Save', class: 'btn teal darken-4 waves-effect waves-light'
+          submit 'Sign In', class: 'btn teal darken-4 waves-effect waves-light'
           a 'Back', href: '/', class: 'btn grey'
         end
       end

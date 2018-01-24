@@ -19,7 +19,7 @@ module Web::Views::Users
           password_field :password
         end
         div class: 'row' do
-          submit 'Save', class: 'btn teal darken-4 waves-effect waves-light'
+          submit 'Create', class: 'btn teal darken-4 waves-effect waves-light'
           a 'Back', href: '/', class: 'btn grey'
         end
       end
