@@ -5,8 +5,8 @@
       == link_to('Home', '/', class: 'teal-text text-darken-4')
 - else
     div.row
-      p
+     p.center-align
       | You must sign in!
-    div.card-action
-      == link_to('Sign Up', '/users/new', class: 'teal-text text-darken-4')
-      == link_to('Sign In', '/sign_in', class: 'btn teal darken-4')
+    div.row
+      == link_to('Sign In', '/sign_in', class: 'btn col s6 teal darken-4')
+      == link_to('Sign Up', '/users/new', class: 'btn col offset-s1 s5 teal-text text-darken-4')

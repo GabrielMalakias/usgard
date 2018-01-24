@@ -5,5 +5,11 @@ install:
 before_script:
   - docker build -t gabrielmalakias/usgard .
   - docker run -d -p 127.0.0.1:80:2300 gabrielmalakias/usgard /bin/sh -c "bundle exec rspec spec"
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'CREATE DATABASE usgard;' -U postgres
+
 script:
   - bundle exec rspec spec

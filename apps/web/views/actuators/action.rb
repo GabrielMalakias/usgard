@@ -24,14 +24,14 @@ module Web::Views::Actuators
 
     def boolean_action(actuator)
       html.div(class: 'row')  do
-        a(class: 'btn', id: "console#{actuator.id}") do
+       a(class: 'btn-floating', id: "console#{actuator.id}") do
           i(class: 'material-icons prefix') do
             'power_settings_new'
           end
         end
 
         span do
-          i(class: 'material-icons prefix', id: "switch#{actuator.id}") do
+          i(class: 'material-icons prefix col s2 offset-s4', id: "switch#{actuator.id}") do
             'flash_off'
           end
         end

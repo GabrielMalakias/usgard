@@ -58,8 +58,11 @@ module Usgard
       Commands::Actuator::Destroy.new
     end
 
+    register('commands.user.password.crypt') do
+      Commands::User::Password::Crypt.new
+    end
+
     register('mqtt.client') do
-      MQTT::Client.connect(host: 'mqtt', port: 1883)
     end
   end
 end
