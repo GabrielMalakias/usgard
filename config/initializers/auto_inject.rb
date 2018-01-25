@@ -10,6 +10,10 @@ module Usgard
       ActuatorRepository.new
     end
 
+    register('users.repository') do
+      UserRepository.new
+    end
+
     register('commands.sensors.list_all') do
       Commands::Sensor::ListAll.new
     end
@@ -58,8 +62,16 @@ module Usgard
       Commands::Actuator::Destroy.new
     end
 
-    register('commands.user.password.crypt') do
-      Commands::User::Password::Crypt.new
+    register('commands.user.password.manager') do
+      Commands::User::Password::Manager.new
+    end
+
+    register('commands.user.builder') do
+      Commands::User::Builder.new
+    end
+
+    register('commands.user.create') do
+      Commands::User::Create.new
     end
 
     register('mqtt.client') do

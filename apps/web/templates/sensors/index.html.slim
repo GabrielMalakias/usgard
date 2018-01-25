@@ -11,6 +11,7 @@ div.row
           li.collection-item id=s.id
             ' #{s.id} - #{s.name}
             a.secondary-content href='#'
+            == csrf_token
               i.material-icons.red-text onclick="App.delete.execute(#{s.id}, 'sensors')"
                 | delete
             == edit_link(s.id)

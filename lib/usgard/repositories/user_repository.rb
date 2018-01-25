@@ -8,8 +8,7 @@ class UserRepository < Hanami::Repository
   end
 
   def find_by_email(email)
-    conditions = { email: email, credentials__provider: 'self' }
-    aggregate(:credentials).join(:credentials).where(conditions).as(User).one
+    aggregate(:credentials).where(email: email).as(User).one
   end
 end
 

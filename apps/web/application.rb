@@ -85,7 +85,7 @@ module Web
         # manager.failure_app = Web::Controllers::Session::Failure.new
       end
       middleware.use OmniAuth::Builder do
-        provider :hanami, repository: UserRepository, interactor: Usgard::Comands::User::FindForAuth
+        provider :hanami, model: User, interactor: Usgard::Commands::User::FindForAuth
       end
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header

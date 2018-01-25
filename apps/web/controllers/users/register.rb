@@ -3,7 +3,7 @@ require 'scrypt'
 module Web::Controllers::Users
   class Register
     include Web::Action
-    include ::AutoInject['users.create']
+    include ::AutoInject['commands.user.create']
 
     def call(params)
       user_params = params[:user]

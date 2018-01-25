@@ -2,6 +2,7 @@ Hanami::Model.migration do
   change do
     create_table :credentials do
       primary_key :id
+
       foreign_key :user_id, :users, on_delete: :cascade, null: false
 
       column :provider, String, null: false

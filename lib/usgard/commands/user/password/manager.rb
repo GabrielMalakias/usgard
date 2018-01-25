@@ -1,10 +1,14 @@
 module Usgard
   module Commands
     module User
-      class Password
-        class Crypt
-          def call(user)
+      module Password
+        class Manager
+          def user_pass(user)
             SCrypt::Password.new(first_user_credentials(user))
+          end
+
+          def encrypt(string)
+            SCrypt::Password.create(string)
           end
 
           private

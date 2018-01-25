@@ -5,11 +5,10 @@ module Usgard
     module User
       class FindForAuth
         include Hanami::Interactor
-        include ::AutoInject['users.repository', 'commands.user.password.crypt']
 
         expose :user
 
-        def initialize(email, pass)
+        def initialize(email, password)
           @email = email
           @password = password
         end
@@ -22,12 +21,20 @@ module Usgard
 
         private
 
+        def repository
+          UserRepository.new
+        end
+
+        def crypt
+          Usgard::Commands::User::Password::Manager.new
+        end
+
         def valid_password?(user)
           current_encrypted_password(user) == @password
         end
 
         def current_encrypted_password(user)
-          crypt.(user)
+          crypt.user_pass(user)
         end
 
         def find_user_by_email
