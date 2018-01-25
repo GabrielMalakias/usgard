@@ -10,6 +10,7 @@ services:
 
 before_script:
   - psql -c 'CREATE DATABASE usgard;' -U postgres
+  - bundle exec rake db:migrate
 
 script:
   - bundle exec rspec spec
