@@ -9,6 +9,7 @@ services:
   - postgresql
 
 before_script:
+  - bundle install
   - psql -c 'CREATE DATABASE usgard;' -U postgres
   - bundle exec rake db:migrate
 
