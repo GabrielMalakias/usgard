@@ -37,10 +37,9 @@ div.row
              i.material-icons settings_ethernet
              | Console
            div.collapsible-body
+             == render_action(actuator)
              div.display_box id='display_box'
-             div.row.input-field
-               i.material-icons.prefix message
-               input.validate id='console'
+
 
   div.card.col.s2.offset-s2.z-depth-4.teal.darken-4.center-align
    div.card-content

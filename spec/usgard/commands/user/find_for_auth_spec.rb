@@ -7,6 +7,7 @@ describe Usgard::Commands::User::FindForAuth do
 
     subject { instance.call }
 
+
     context 'when its a valid user' do
       let(:email) { 'usgard1@usgard.com' }
       let(:password) { 'inicial' }

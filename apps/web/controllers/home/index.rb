@@ -11,7 +11,7 @@ module Web::Controllers::Home
 
     def call(params)
       @sensors = sensors_by_visibility.(true)
-      @actuators = actuators_by_visibility.(true)
+      @actuators = actuators_by_visibility.(current_user, true)
     end
   end
 end

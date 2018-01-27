@@ -1,6 +1,6 @@
 module Web::Views::Actuators
   module Action
-    include Web::View
+   include Web::View
 
     def render_action(actuator)
       case actuator.type

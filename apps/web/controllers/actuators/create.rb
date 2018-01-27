@@ -20,12 +20,18 @@ module Web::Controllers::Actuators
 
     def call(params)
       if params.valid?
-        actuator = create.(params.get(:actuator))
+        actuator = create.(create_params)
 
         redirect_to routes.actuator_path(id: actuator.id)
       else
         self.status = 422
       end
+    end
+
+    private
+
+    def create_params
+      params.get(:actuator).merge(user_id: current_user.id)
     end
   end
 end

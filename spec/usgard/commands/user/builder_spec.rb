@@ -6,10 +6,10 @@ describe Usgard::Commands::User::Builder do
 
   describe '#call' do
     let(:input) do
-      { name: 'Gabriel', email: 'gabriel07malakias@gmail.com', password: '1234' }
+      { name: 'Gabriel', email: 'usgard@usgard.com', password: '1234' }
     end
     let(:output) do
-      { name: 'Gabriel', email: 'gabriel07malakias@gmail.com',
+      { name: 'Gabriel', email: 'usgard@usgard.com',
         credentials: [{ crypted_password: 'bla', provider: 'Usgard' }] }
     end
 

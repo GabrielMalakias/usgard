@@ -18,8 +18,7 @@ module Web
       #
       load_paths << [
         'controllers',
-        'views',
-        'interactors'
+        'views'
       ]
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).

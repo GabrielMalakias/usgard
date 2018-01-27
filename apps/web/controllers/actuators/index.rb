@@ -9,7 +9,7 @@ module Web::Controllers::Actuators
     expose :actuators
 
     def call(params)
-      @actuators = list_all.()
+      @actuators = list_all.(user_id: current_user.id)
     end
   end
 end

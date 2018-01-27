@@ -4,8 +4,4 @@ class SensorRepository < Hanami::Repository
       .where(visible: visibility)
       .limit(limit)
   end
-
-  def pluck_ids
-    sensors.pluck(:id)
-  end
 end

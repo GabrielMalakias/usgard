@@ -1,6 +1,7 @@
 class UserRepository < Hanami::Repository
   associations do
     has_many :credentials
+    has_many :actuators
   end
 
   def create_with_credentials(data)
