@@ -1,4 +1,4 @@
-App.sensor = (function() {
+App.actuator = (function() {
   var config = {
     container: "display_box",
     channel: "actuator",
@@ -14,19 +14,37 @@ App.sensor = (function() {
       functions: subscriptionFunctions()}
     );
 
-    addListeners();
+    addListeners(identifier().id);
     true
   }
 
-  function addListeners() {
-    return getConsoleInput()
-      .addEventListener("keydown", function (event) {
-      if (event.which == 13 || event.keyCode == 13) {
-        onEnter();
-        return false;
-      }
-      return true;
-    });
+  function addListeners(id) {
+    var input = getConsoleInput(id);
+
+    switch(input.tagName) {
+      case "A":
+        input.addEventListener("click", function (event) {
+          input.setAttribute('disabled', true);
+          onClick(id);
+
+          setTimeout(function() {
+            input.removeAttribute('disabled');
+          }, 2000)
+        });
+        break;
+      case "INPUT":
+        return input.addEventListener("keydown", function (event) {
+          if (event.which == 13 || event.keyCode == 13) {
+            onEnter(id);
+            return false;
+          }
+          return true;
+        });
+        break;
+      default:
+        null;
+        break;
+    }
   }
 
   function identifier() {
@@ -63,18 +81,35 @@ App.sensor = (function() {
     });
   }
 
-  function onEnter() {
+  function onEnter(id) {
     config.socket.perform('speak', {
-        message: getMessageFromConsoleInput(),
+        message: getMessageFromConsoleInput(id),
         user: getUserId().value
       });
   }
 
+  function onClick(id) {
+    Materialize.toast('Message sent', 4000);
+    var value = $("#switch" + id).text().trim();
+
+    switch(value) {
+      case 'flash_on':
+        config.socket.perform('speak', { message: 'off' });
+        document.getElementById('switch' + id).innerHTML = 'flash_off';
+        break;
+      case 'flash_off':
+        config.socket.perform('speak', { message: 'on' });
+        document.getElementById('switch' + id).innerHTML = 'flash_on';
+        break;
+    }
+    return value;
+  }
+
   // Create HTML elements
   //
-  function getMessageFromConsoleInput() {
-    var value = getConsoleInput().value;
-    getConsoleInput().value = null;
+  function getMessageFromConsoleInput(id) {
+    var value = getConsoleInput(id).value;
+    getConsoleInput(id).value = null;
     return value;
   }
 
@@ -104,8 +139,8 @@ App.sensor = (function() {
     getMessageBoxElement().prepend(createMessageNode(incomingMessage.message));
   }
 
-  function getConsoleInput() {
-    return document.getElementById("console")
+  function getConsoleInput(id) {
+    return document.getElementById("console" + id)
   }
 
   return {

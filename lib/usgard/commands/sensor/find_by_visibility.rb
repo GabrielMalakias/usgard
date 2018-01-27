@@ -4,8 +4,8 @@ module Usgard
       class FindByVisibility
         include ::AutoInject['sensors.repository']
 
-        def call(visibility)
-          repository.find_by_visibility(visibility)
+        def call(user, visibility)
+          repository.find_by_visibility(user.id, visibility)
         end
       end
     end

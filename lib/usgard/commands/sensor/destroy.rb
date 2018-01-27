@@ -4,8 +4,8 @@ module Usgard
       class Destroy
         include ::AutoInject['sensors.repository']
 
-        def call(id)
-          repository.delete id
+        def call(id, user_id:)
+          repository.delete_by_id_and_user_id(id, user_id)
         end
       end
     end

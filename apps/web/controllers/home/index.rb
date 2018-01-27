@@ -2,7 +2,9 @@ module Web::Controllers::Home
   class Index
     include Web::Action
     include Web::Authentication
-    include ::AutoInject[sensors_by_visibility: 'commands.sensors.find_by_visibility', actuators_by_visibility: 'commands.actuators.find_by_visibility']
+    include ::AutoInject[
+      sensors_by_visibility: 'commands.sensors.find_by_visibility',
+      actuators_by_visibility: 'commands.actuators.find_by_visibility']
 
     before :authenticate!
 
@@ -10,7 +12,7 @@ module Web::Controllers::Home
     expose :actuators
 
     def call(params)
-      @sensors = sensors_by_visibility.(true)
+      @sensors = sensors_by_visibility.(current_user, true)
       @actuators = actuators_by_visibility.(current_user, true)
     end
   end

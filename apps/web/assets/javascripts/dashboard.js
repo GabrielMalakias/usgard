@@ -80,8 +80,6 @@ App.dashboard = (function() {
         document.getElementById('switch' + id).innerHTML = 'flash_on';
         break;
     }
-
-
     return value;
   }
 

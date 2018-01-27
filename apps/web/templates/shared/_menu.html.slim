@@ -1,30 +1,32 @@
 nav.teal.darken-4
   div.nav-wrapper
     a.brand-logo href='/'
-      i.material-icons
-        | ac_unit
+      i.material-icons.teal.accent-4
+        | developer_mode
       | Usgard
     ul.right.hide-on-med-and-down
-      li
+      li.teal.darken-1
         a href='/'
           i.material-icons
-            | dashboard
-      li
+            | home
+      li.teal.darken-2
         a href=routes.actuators_path
           i.material-icons
-            | import_export
-      li
+            | developer_board
+      li.teal.darken-3
         a href=routes.sensors_path
           i.material-icons
             | track_changes
-      li
+      li.teal.darken-4
         a href='/'
           i.material-icons
             | settings
-      li.grey
+      li.grey.darken-4
+        span id="user_id"
+           | #{current_user.id}
         a href='#'
           | #{current_user.name}
-      li.grey
+      li.teal.accent-4
         a href='/logout'
           i.material-icons
             | close

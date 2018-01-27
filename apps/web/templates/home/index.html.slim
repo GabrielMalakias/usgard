@@ -3,8 +3,10 @@
 div.row
  col.s12
    div.card
-     div.card-content
-       span.card-title
+     div.card-content.teal.darken-2
+       span.card-title.white-text
+         i.material-icons
+           | developer_board
          | Actuators
        div.row
          - actuators.each do |a|
@@ -15,9 +17,11 @@ div.row
 div.row
  col.s12
    div.card
-     div.card-content
-       span.card-title
-         | Sensor
+     div.card-content.teal.darken-3
+       span.card-title.white-text
+         i.material-icons
+           | track_changes
+         | Sensors
        div.row
          - sensors.each do |s|
             javascript:
