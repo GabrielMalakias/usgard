@@ -2,10 +2,12 @@ require 'spec_helper'
 require_relative '../../../../apps/web/controllers/actuators/destroy'
 
 describe Web::Controllers::Actuators::Destroy, type: :controller do
+  let(:user) { instance_double(User, id: user_id) }
   let(:action) { described_class.new }
+  let(:user_id) { 1 }
 
   before do
-    stub_current_user!
+    stub_current_user!(user)
   end
 
   context 'when is successful' do

@@ -6,19 +6,19 @@ nav.teal.darken-4
       | Usgard
     ul.right.hide-on-med-and-down
       li.teal.darken-1
-        a href='/'
+        a.tooltipped href='/' data-position='bottom' data-delay='30' data-tooltip='Home'
           i.material-icons
             | home
       li.teal.darken-2
-        a href=routes.actuators_path
+        a.tooltipped href=routes.actuators_path data-position='bottom' data-delay='30' data-tooltip='Actuators'
           i.material-icons
             | developer_board
       li.teal.darken-3
-        a href=routes.sensors_path
+        a.tooltipped href=routes.sensors_path data-position='bottom' data-delay='30' data-tooltip='Sensors'
           i.material-icons
             | track_changes
       li.teal.darken-4
-        a href='/'
+        a.tooltipped href='/' data-position='bottom' data-delay='30' data-tooltip='Settings'
           i.material-icons
             | settings
       li.grey.darken-4
@@ -27,7 +27,7 @@ nav.teal.darken-4
         a href='#'
           | #{current_user.name}
       li.teal.accent-4
-        a href='/logout'
+        a.tooltipped href='/logout' data-position='bottom' data-delay='30' data-tooltip='Logout'
           i.material-icons
             | close
 

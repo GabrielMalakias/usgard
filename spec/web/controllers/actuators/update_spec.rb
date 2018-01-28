@@ -4,14 +4,16 @@ require_relative '../../../../lib/usgard/commands/actuator/update'
 require_relative '../../../../lib/usgard/commands/actuator/find_by_id'
 
 describe Web::Controllers::Actuators::Update, type: :controller do
-  let(:action) { described_class.new(update: update, find_by_id: find_by_id) }
-  let(:actuator) { Actuator.new }
   let(:id) { '10' }
+  let(:user) { instance_double(User, id: user_id) }
+  let(:action) { described_class.new(update: update, find_by_id: find_by_id) }
+  let(:user_id)  { 1 }
+  let(:actuator) { Actuator.new }
   let(:update) { double(Usgard::Commands::Actuator::Update) }
   let(:find_by_id) { double(Usgard::Commands::Actuator::FindById) }
 
   before do
-    stub_current_user!
+    stub_current_user!(user)
   end
 
   context 'when has a result' do

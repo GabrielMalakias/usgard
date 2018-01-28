@@ -14,8 +14,10 @@ module Web::Views::Home
               'settings_ethernet'
             end
           end
-          p(class: 'grey-text darken-4-text') do
-            actuator.name
+          p do
+            link_to(routes.actuator_path(id: actuator.id), class: 'grey-text darken-4-text') do
+              actuator.name
+            end
           end
         end
 
@@ -39,15 +41,10 @@ module Web::Views::Home
           span(class: 'card-title teal-text', id: "sensor#{sensor.id}") do
             " - "
           end
-          p(class: 'grey-text darken-4-text') do
-            sensor.name
-          end
-        end
 
-        div(class: 'card-action') do
-          link_to(routes.sensor_path(id: sensor.id), class: 'teal-text text-lighten-1') do
-            html.i(class: 'material-icons teal-text text-darken-2') do
-              'visibility'
+          p(class: 'grey-text darken-4-text') do
+            link_to(routes.sensor_path(id: sensor.id), class: 'grey-text darken-4-text') do
+              sensor.name
             end
           end
         end

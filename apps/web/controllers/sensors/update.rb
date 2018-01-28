@@ -20,10 +20,11 @@ module Web::Controllers::Sensors
     end
 
     def call(params)
-      @sensor = find_by_id.(params.get(:id))
+      @sensor = find_by_id.(params.get(:id),
+                            user_id: current_user.id)
 
       if params.valid? && !@sensor.nil?
-        update.(params.get(:id), sensor_params(params))
+        update.(params.get(:id), update_params)
 
         redirect_to routes.sensor_url(id: params.get(:id))
       else
@@ -31,8 +32,8 @@ module Web::Controllers::Sensors
       end
     end
 
-    def sensor_params(params)
-      @sensor_params ||= params.get(:sensor)
+    def update_params
+      params.get(:sensor)
     end
   end
 end

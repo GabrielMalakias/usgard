@@ -4,14 +4,16 @@ require_relative '../../../../lib/usgard/commands/sensor/update'
 require_relative '../../../../lib/usgard/commands/sensor/find_by_id'
 
 describe Web::Controllers::Sensors::Update, type: :controller do
+  let(:id) { '10' }
+  let(:user) { instance_double(User, id: user_id) }
   let(:action) { described_class.new(update: update, find_by_id: find_by_id) }
   let(:sensor) { Sensor.new }
-  let(:id) { '10' }
+  let(:user_id) { 1 }
   let(:update) { double(Usgard::Commands::Sensor::Update) }
   let(:find_by_id) { double(Usgard::Commands::Sensor::FindById) }
 
   before do
-    stub_current_user!
+    stub_current_user!(user)
   end
 
   context 'when has a result' do

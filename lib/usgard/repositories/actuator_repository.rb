@@ -1,8 +1,10 @@
 class ActuatorRepository < Hanami::Repository
-  def find_by_visibility(user_id, visibility, limit: 9)
-    find_by_user_id(user_id)
-      .where(visible: visibility)
-      .limit(limit)
+  def find_by_params(params)
+    attributes = params.reject { |k, _| k == :limit }
+
+    actuators
+      .where(attributes)
+      .limit(params.fetch(:limit, 10))
   end
 
   def find_by_id_and_user_id(id, user_id)

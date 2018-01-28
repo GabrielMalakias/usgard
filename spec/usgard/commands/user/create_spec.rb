@@ -22,7 +22,9 @@ describe Usgard::Commands::User::Create do
     subject { instance.call(input) }
 
    it 'delegates to repository' do
-     expect(repository).to receive(:create).with(output).once
+     expect(repository)
+       .to receive(:create_with_credentials)
+       .with(output).once
 
      subject
    end

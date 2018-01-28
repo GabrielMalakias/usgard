@@ -3,14 +3,16 @@ require_relative '../../../../apps/web/controllers/actuators/index'
 require_relative '../../../../lib/usgard/commands/actuator/list_all'
 
 describe Web::Controllers::Actuators::Index, type: :controller do
+  let(:user) { instance_double(User, id: user_id) }
   let(:action) { described_class.new(list_all: list_all) }
   let(:all) { [Actuator.new, Actuator.new] }
   let(:id) { '10' }
+  let(:user_id) { 1 }
   let(:list_all) { double(Usgard::Commands::Actuator::ListAll) }
   let(:params) { Hash[] }
 
   before do
-    stub_current_user!
+    stub_current_user!(user)
   end
 
   context 'when has a result' do

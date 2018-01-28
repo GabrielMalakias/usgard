@@ -1,11 +1,12 @@
 module Usgard
   module Commands
     module Sensor
-      class FindByVisibility
+      class FindByParams
         include ::AutoInject['sensors.repository']
 
-        def call(user, visibility)
-          repository.find_by_visibility(user.id, visibility)
+        def call(params, user_id:)
+          repository
+            .find_by_params(params.merge(user_id: user_id))
         end
       end
     end
