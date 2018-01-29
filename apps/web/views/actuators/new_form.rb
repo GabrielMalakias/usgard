@@ -43,8 +43,8 @@ module Web::Views::Actuators
           end
 
           p do
-            radio_button :type, 'boolean', id: 'actuator-boolean-type'
-            label 'Boolean', for: :boolean_type
+            radio_button :type, 'switch', id: 'actuator-switch-type'
+            label 'Switch', for: :switch_type
           end
         end
 

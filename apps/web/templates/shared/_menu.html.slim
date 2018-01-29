@@ -24,7 +24,7 @@ nav.teal.darken-4
       li.grey.darken-4
         span id="user_id"
            | #{current_user.id}
-        a href='#'
+        a.button-collapse href='#' data-activates='slide-out'
           | #{current_user.name}
       li.teal.accent-4
         a.tooltipped href='/logout' data-position='bottom' data-delay='30' data-tooltip='Logout'

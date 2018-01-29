@@ -4,10 +4,10 @@ module Web::Views::Actuators
 
     def render_action(actuator)
       case actuator.type
-      when 'text'
+      when ::Actuator::TYPES_TEXT
         text_action(actuator)
-      when 'boolean'
-        boolean_action(actuator)
+      when ::Actuator::TYPES_SWITCH
+        switch_action(actuator)
       end
     end
 
@@ -22,7 +22,7 @@ module Web::Views::Actuators
       end
     end
 
-    def boolean_action(actuator)
+    def switch_action(actuator)
       html.div(class: 'row')  do
        a(class: 'btn-floating', id: "console#{actuator.id}") do
           i(class: 'material-icons prefix') do
