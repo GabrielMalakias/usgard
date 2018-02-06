@@ -1,6 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (5.1.4)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     anycable (0.4.3)
@@ -47,6 +52,8 @@ GEM
       dry-equalizer (~> 0.2)
       dry-logic (~> 0.4, >= 0.4.0)
       dry-types (~> 0.11.0)
+    factory_bot (4.8.2)
+      activesupport (>= 3.0.0)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
@@ -117,6 +124,8 @@ GEM
     http_router (0.11.2)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
+    i18n (0.9.3)
+      concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     inflecto (0.0.2)
     jwt (1.5.6)
@@ -130,6 +139,7 @@ GEM
       mini_mime (>= 0.1.1)
     memoist (0.15.0)
     mini_mime (1.0.0)
+    minitest (5.11.3)
     mqtt (0.5.0)
     multi_json (1.12.1)
     multipart-post (2.0.0)
@@ -194,8 +204,11 @@ GEM
       temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
     temple (0.7.7)
+    thread_safe (0.3.6)
     tilt (2.0.6)
     transproc (1.0.2)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
     url_mount (0.2.1)
       rack
     warden (1.2.7)
@@ -210,6 +223,7 @@ DEPENDENCIES
   anyway_config (~> 0.5.0)
   dotenv (~> 2.0)
   dry-auto_inject
+  factory_bot
   hanami (= 1.1)
   hanami-model (= 1.1)
   litecable

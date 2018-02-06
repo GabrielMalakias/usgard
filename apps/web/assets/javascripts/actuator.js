@@ -2,7 +2,6 @@ App.actuator = (function() {
   var config = {
     container: "display_box",
     channel: "actuator",
-    userId: "user_id",
     socket: null,
     statusIndicator: '#status_indicator'
   };
@@ -84,7 +83,7 @@ App.actuator = (function() {
   function onEnter(id) {
     config.socket.perform('speak', {
         message: getMessageFromConsoleInput(id),
-        user: getUserId().value
+        user: getUserId().text()
       });
   }
 
@@ -120,7 +119,7 @@ App.actuator = (function() {
   }
 
   function getUserId() {
-    return document.getElementById(config.userId)
+    return $(config.userId).text();
   }
 
   function getMessageBoxElement() {

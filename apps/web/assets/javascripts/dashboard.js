@@ -87,7 +87,7 @@ App.dashboard = (function() {
   function onEnter(id, subscription) {
     Materialize.toast('Message sent', 4000);
     var value = getConsoleInput(id).value;
-    subscription.perform('speak', { message: getConsoleInput(id).value });
+    subscription.perform('speak', { message: getConsoleInput(id).value, user: getUserId() });
     getConsoleInput(id).value = null;
     return value;
   }
@@ -120,6 +120,10 @@ App.dashboard = (function() {
 
   function getConsoleInput(id) {
     return document.getElementById("console" + id);
+  }
+
+  function getUserId() {
+    return $("#user_id").text();
   }
 
   return {
