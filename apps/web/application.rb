@@ -83,6 +83,7 @@ module Web
       middleware.use Warden::Manager do |manager|
         # manager.failure_app = Web::Controllers::Session::Failure.new
       end
+
       middleware.use OmniAuth::Builder do
         provider :hanami, model: User, interactor: Usgard::Commands::User::FindForAuth
       end
