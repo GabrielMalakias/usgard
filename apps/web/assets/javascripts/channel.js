@@ -14,7 +14,7 @@ App.channel = (function() {
 
   // Unique identifier for a connection
   function socketId() {
-    return Date.now + generateRandomNumber();
+    return Date.now() + generateRandomNumber();
   }
 
   function generateRandomNumber() {

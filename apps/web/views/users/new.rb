@@ -5,7 +5,7 @@ module Web::Views::Users
     layout :login
 
     def form
-      form_for :user, routes.register_path, class: 'col s4 offset-s4' do
+      form_for :user, routes.register_path do
         div class: 'row input-field' do
           label :name
           text_field :name
@@ -19,7 +19,7 @@ module Web::Views::Users
           password_field :password
         end
         div class: 'row' do
-          submit 'Save', class: 'btn teal darken-4 waves-effect waves-light'
+          submit 'Create', class: 'btn teal darken-4 waves-effect waves-light'
           a 'Back', href: '/', class: 'btn grey'
         end
       end

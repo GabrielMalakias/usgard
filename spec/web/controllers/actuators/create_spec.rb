@@ -1,19 +1,24 @@
 require 'spec_helper'
 require_relative '../../../../apps/web/controllers/actuators/create'
 
-describe Web::Controllers::Actuators::Create do
+describe Web::Controllers::Actuators::Create, type: :controller do
+  let(:user) { instance_double(User, id: user_id) }
   let(:action) { described_class.new }
+  let(:user_id) { 1 }
+
+  before do
+    stub_current_user!(user)
+  end
 
   context 'when is successful' do
+    let(:user_id) { 1 }
     let(:params) do
-      { params:
-        { actuators:
+        { actuator:
           { name: 'luminosity switch', description: 'test', topic: 'luminosity_switch', visible: true, type: 'text' }
         }
-      }
     end
 
-    it 'status is 302' do
+   it 'status is 302' do
       response = action.call(params)
 
       expect(response[0]).to eq 302

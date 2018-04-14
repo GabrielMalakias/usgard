@@ -13,3 +13,4 @@ get '/logout', to: 'session#destroy'
 
 get '/auth/:provider/callback', to: 'session#create'
 post '/auth/:provider/callback', to: 'session#create'
+get '/auth/failure', to: 'users#sign_in'

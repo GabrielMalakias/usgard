@@ -25,7 +25,7 @@ module Web::Views::Sensors
     def destroy_link(id)
       url = routes.sensor_path(id: id)
 
-      link_to(url, class: 'secondary-content') do
+      link_to(url, class: 'secondary-content', method: :delete) do
         html.i(class: 'material-icons red-text text-darken-4') do
           'delete'
         end

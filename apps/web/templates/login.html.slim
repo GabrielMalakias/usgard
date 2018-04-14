@@ -11,10 +11,11 @@ html.ls-theme-blue
 
   body
     div.container
-     div.row
-       div.col.s12
-         div.col.s4.offset-s4
+      div.row.col.s12.m6
+        div.card.z-depth-2.col.s4.offset-s4
+         div.card-image
            img src='/assets/usgard_logo_black.png'
-         == yield
+         div.card-content
+           == yield
 
 

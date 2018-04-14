@@ -28,7 +28,7 @@ Hanami.configure do
   end
 
   environment :development do
-    logger level: :info
+    logger ::Logger.new(STDOUT)
   end
 
   environment :production do

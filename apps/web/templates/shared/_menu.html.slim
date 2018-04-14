@@ -1,31 +1,33 @@
 nav.teal.darken-4
   div.nav-wrapper
     a.brand-logo href='/'
-      i.material-icons
-        | ac_unit
+      i.material-icons.teal.accent-4
+        | developer_mode
       | Usgard
     ul.right.hide-on-med-and-down
-      li
-        a href='/'
+      li.teal.darken-1
+        a.tooltipped href='/' data-position='bottom' data-delay='30' data-tooltip='Home'
           i.material-icons
-            | dashboard
-      li
-        a href=routes.actuators_path
+            | home
+      li.teal.darken-2
+        a.tooltipped href=routes.actuators_path data-position='bottom' data-delay='30' data-tooltip='Actuators'
           i.material-icons
-            | import_export
-      li
-        a href=routes.sensors_path
+            | developer_board
+      li.teal.darken-3
+        a.tooltipped href=routes.sensors_path data-position='bottom' data-delay='30' data-tooltip='Sensors'
           i.material-icons
             | track_changes
-      li
-        a href='/'
+      li.teal.darken-4
+        a.tooltipped href='/' data-position='bottom' data-delay='30' data-tooltip='Settings'
           i.material-icons
             | settings
-      li.grey
-        a href='#'
+      li.grey.darken-4
+        span id="user_id"
+           | #{current_user.id}
+        a.button-collapse href='#' data-activates='slide-out'
           | #{current_user.name}
-      li.grey
-        a href='/logout'
+      li.teal.accent-4
+        a.tooltipped href='/logout' data-position='bottom' data-delay='30' data-tooltip='Logout'
           i.material-icons
             | close
 

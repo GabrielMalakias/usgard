@@ -22,7 +22,7 @@ module Web::Views::Sensors
 
         div(class: 'row input-field')  do
           i(class: 'material-icons prefix') do
-            'perm_data_setting'
+            'mail'
           end
 
           label 'Topic', for: :topic

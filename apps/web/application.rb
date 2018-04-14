@@ -18,8 +18,7 @@ module Web
       #
       load_paths << [
         'controllers',
-        'views',
-        'interactors'
+        'views'
       ]
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
@@ -84,9 +83,9 @@ module Web
       middleware.use Warden::Manager do |manager|
         # manager.failure_app = Web::Controllers::Session::Failure.new
       end
+
       middleware.use OmniAuth::Builder do
-        provider :hanami, repository: UserRepository, interactor: FindUserForAuth
-        provider :github, ENV['GH_CLIENT_ID'], ENV['GH_CLIENT_SECRET'], scope: 'user:email'
+        provider :hanami, model: User, interactor: Usgard::Commands::User::FindForAuth
       end
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header

@@ -12,9 +12,9 @@ module Web::Controllers::Sensors
 
     def call(params)
       if params.valid?
-        destroy.(params.get(:id))
+        destroy.(params.get(:id), user_id: current_user.id)
       else
-        self.status = 422
+        halt 422
       end
     end
   end

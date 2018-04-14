@@ -1,18 +1,23 @@
+require_relative '../actuators/action'
+
 module Web::Views::Home
   class Index
     include Web::View
+    include Web::Views::Actuators::Action
 
     def actuator_card(actuator)
-      html.div(class: 'col s4 z-depth-1 card') do
-        div(class: 'card-content') do
+      html.div(class: 'col s4 z-depth-1 card white') do
+       div(class: 'card-content') do
           span(class: 'card-title activator') do
             span(id: "actuator#{actuator.id}", class: 'teal-text')
             i(class: 'material-icons teal-text text-darken-2 right') do
               'settings_ethernet'
             end
           end
-          p(class: 'grey-text darken-4-text') do
-            actuator.name
+          p do
+            link_to(routes.actuator_path(id: actuator.id), class: 'grey-text darken-4-text') do
+              actuator.name
+            end
           end
         end
 
@@ -24,32 +29,22 @@ module Web::Views::Home
           end
 
           div(class: 'card-content') do
-            div(class: 'row input-field') do
-              i(class: 'material-icons prefix') do
-                'message'
-              end
-              input(class: 'validate', id: "console#{actuator.id}")
-            end
+            render_action(actuator)
           end
         end
       end
     end
 
     def sensor_card(sensor)
-      html.div(class: 'col s4 z-depth-1') do
+      html.div(class: 'col s4 z-depth-1 white') do
         div(class: 'card-content') do
           span(class: 'card-title teal-text', id: "sensor#{sensor.id}") do
             " - "
           end
-          p(class: 'grey-text darken-4-text') do
-            sensor.name
-          end
-        end
 
-        div(class: 'card-action') do
-          link_to(routes.sensor_path(id: sensor.id), class: 'teal-text text-lighten-1') do
-            html.i(class: 'material-icons teal-text text-darken-2') do
-              'visibility'
+          p(class: 'grey-text darken-4-text') do
+            link_to(routes.sensor_path(id: sensor.id), class: 'grey-text darken-4-text') do
+              sensor.name
             end
           end
         end

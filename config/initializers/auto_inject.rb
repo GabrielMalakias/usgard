@@ -10,6 +10,10 @@ module Usgard
       ActuatorRepository.new
     end
 
+    register('users.repository') do
+      UserRepository.new
+    end
+
     register('commands.sensors.list_all') do
       Commands::Sensor::ListAll.new
     end
@@ -26,8 +30,8 @@ module Usgard
       Commands::Sensor::FindById.new
     end
 
-    register('commands.sensors.find_by_visibility') do
-      Commands::Sensor::FindByVisibility.new
+    register('commands.sensors.find_by_params') do
+      Commands::Sensor::FindByParams.new
     end
 
     register('commands.sensors.destroy') do
@@ -50,12 +54,24 @@ module Usgard
       Commands::Actuator::FindById.new
     end
 
-    register('commands.actuators.find_by_visibility') do
-      Commands::Actuator::FindByVisibility.new
+    register('commands.actuators.find_by_params') do
+      Commands::Actuator::FindByParams.new
     end
 
     register('commands.actuators.destroy') do
       Commands::Actuator::Destroy.new
+    end
+
+    register('commands.user.password.manager') do
+      Commands::User::Password::Manager.new
+    end
+
+    register('commands.user.builder') do
+      Commands::User::Builder.new
+    end
+
+    register('commands.user.create') do
+      Commands::User::Create.new
     end
 
     register('mqtt.client') do

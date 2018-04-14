@@ -22,7 +22,7 @@ module Web::Views::Actuators
 
         div(class: 'row input-field')  do
           i(class: 'material-icons prefix') do
-            'perm_data_setting'
+            'mail'
           end
 
           label 'Topic', for: :topic
@@ -43,8 +43,8 @@ module Web::Views::Actuators
           end
 
           p do
-            radio_button :type, 'boolean', id: 'actuator-boolean-type'
-            label 'Boolean', for: :boolean_type
+            radio_button :type, 'switch', id: 'actuator-switch-type'
+            label 'Switch', for: :switch_type
           end
         end
 

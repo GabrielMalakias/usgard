@@ -9,7 +9,8 @@ module Web::Controllers::Sensors
     expose :sensor
 
     def call(params)
-      @sensor = find_by_id.(params.get(:id))
+      @sensor = find_by_id.(params.get(:id),
+                            user_id: current_user.id)
 
       halt 404 if @sensor.nil?
     end

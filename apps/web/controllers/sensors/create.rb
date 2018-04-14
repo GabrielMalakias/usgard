@@ -17,12 +17,18 @@ module Web::Controllers::Sensors
 
     def call(params)
       if params.valid?
-        sensor = create.(params.get(:sensor))
+        sensor = create.(create_params)
 
         redirect_to routes.sensor_url(id: sensor.id)
       else
         self.status = 422
       end
+    end
+
+    private
+
+    def create_params
+      params.get(:sensor).merge(user_id: current_user.id)
     end
   end
 end

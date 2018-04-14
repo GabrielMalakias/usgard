@@ -18,9 +18,14 @@ html.ls-theme-blue
 
   body
     == render partial: 'shared/menu'
+    == render partial: 'shared/user'
 
     div.container
      div.row
         == yield
 
     == render partial: 'shared/footer'
+
+  javascript:
+    $(".button-collapse").sideNav();
+

@@ -1,7 +1,7 @@
 module Usgard
   module Commands
     module Actuator
-      class Create
+     class Create
         include ::AutoInject['actuators.repository']
 
         def call(params)

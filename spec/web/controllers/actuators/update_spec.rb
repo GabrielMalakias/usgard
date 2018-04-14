@@ -3,12 +3,18 @@ require_relative '../../../../apps/web/controllers/actuators/update'
 require_relative '../../../../lib/usgard/commands/actuator/update'
 require_relative '../../../../lib/usgard/commands/actuator/find_by_id'
 
-describe Web::Controllers::Actuators::Update do
-  let(:action) { described_class.new(update: update, find_by_id: find_by_id) }
-  let(:actuator) { Actuator.new }
+describe Web::Controllers::Actuators::Update, type: :controller do
   let(:id) { '10' }
+  let(:user) { instance_double(User, id: user_id) }
+  let(:action) { described_class.new(update: update, find_by_id: find_by_id) }
+  let(:user_id)  { 1 }
+  let(:actuator) { Actuator.new }
   let(:update) { double(Usgard::Commands::Actuator::Update) }
   let(:find_by_id) { double(Usgard::Commands::Actuator::FindById) }
+
+  before do
+    stub_current_user!(user)
+  end
 
   context 'when has a result' do
     before do
@@ -21,7 +27,7 @@ describe Web::Controllers::Actuators::Update do
       end
 
       before do
-        allow(update).to receive(:call).with(id, actuator_params).and_return(sensor)
+        allow(update).to receive(:call).with(id, actuator_params).and_return(actuator)
       end
 
       it 'status is 302' do

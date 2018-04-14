@@ -38,19 +38,56 @@ App.dashboard = (function() {
   }
 
   function addListener(id, subscription) {
-    return getConsoleInput(id).addEventListener("keydown", function (event) {
-      if (event.which == 13 || event.keyCode == 13) {
-        onEnter(id, subscription);
-        return false;
-      }
-      return true;
-    });
+    var input = getConsoleInput(id);
+
+    switch(input.tagName) {
+      case "A":
+        input.addEventListener("click", function (event) {
+            input.setAttribute('disabled', true);
+            onClick(id, subscription);
+
+           setTimeout(function() {
+             input.removeAttribute('disabled');
+           }, 2000)
+        });
+        break;
+      case "INPUT":
+        return input.addEventListener("keydown", function (event) {
+          if (event.which == 13 || event.keyCode == 13) {
+            onEnter(id, subscription);
+            return false;
+          }
+          return true;
+        });
+        break;
+      default:
+        null;
+        break;
+    }
   }
+
+  function onClick(id, subscription) {
+    Materialize.toast('Message sent', 4000);
+    var value = $("#switch" + id).text().trim();
+
+    switch(value) {
+      case 'flash_on':
+        subscription.perform('speak', { message: 'off' });
+        document.getElementById('switch' + id).innerHTML = 'flash_off';
+        break;
+      case 'flash_off':
+        subscription.perform('speak', { message: 'on' });
+        document.getElementById('switch' + id).innerHTML = 'flash_on';
+        break;
+    }
+    return value;
+  }
+
 
   function onEnter(id, subscription) {
     Materialize.toast('Message sent', 4000);
     var value = getConsoleInput(id).value;
-    subscription.perform('speak', { message: getConsoleInput(id).value });
+    subscription.perform('speak', { message: getConsoleInput(id).value, user: getUserId() });
     getConsoleInput(id).value = null;
     return value;
   }
@@ -83,6 +120,10 @@ App.dashboard = (function() {
 
   function getConsoleInput(id) {
     return document.getElementById("console" + id);
+  }
+
+  function getUserId() {
+    return $("#user_id").text();
   }
 
   return {

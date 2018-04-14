@@ -53,5 +53,12 @@ main {
   color: #000;
 }
 
+#user_id {
+  display: none;
+}
+
+html {
+  font-family: Papercraft, Calibri, Trebuchet, sans-serif;
+}
 
 

@@ -9,7 +9,7 @@ module Web::Controllers::Sensors
     expose :sensors
 
     def call(params)
-      @sensors = Array(list_all.())
+      @sensors = list_all.(user_id: current_user.id)
     end
   end
 end

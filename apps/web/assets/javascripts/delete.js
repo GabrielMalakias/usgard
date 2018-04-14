@@ -1,11 +1,11 @@
 App.delete = (function() {
   var config = { resourceId: null };
 
-  function execute(resourceId, resource) {
+  function execute(resourceId, resource, token) {
     config.resourceId = resourceId;
 
     $.ajax({
-      url: '/' + resource + '/' + resourceId,
+      url: '/' + resource + '/' + resourceId  + '?_csrf_token=' + token,
       type: 'DELETE',
       success: onSuccess
     });

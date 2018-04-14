@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'hanami',       '1.0.0'
-gem 'hanami-model', '1.0.0'
+gem 'hanami',       '1.1'
+gem 'hanami-model', '1.1'
 
 gem 'pg'
 gem 'puma',  '3.7.1'
@@ -16,7 +16,6 @@ gem 'litecable'
 gem "anyway_config", "~> 0.5.0"
 gem "websocket", "~> 1.2.4"
 
-gem 'omniauth-github'
 gem 'warden'
 
 gem 'scrypt'
@@ -32,4 +31,5 @@ end
 
 group :test do
   gem 'rspec'
+  gem 'factory_bot'
 end
