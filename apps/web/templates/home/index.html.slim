@@ -11,7 +11,7 @@ div.row
        div.row
          - actuators.each do |a|
             javascript:
-              App.dashboard.addIdentifier(#{a.id}, 'actuator');
+              App.dashboard.addIdentifier("#{a.id.to_s}", 'actuator');
             == actuator_card(a)
 
 div.row
@@ -25,7 +25,7 @@ div.row
        div.row
          - sensors.each do |s|
             javascript:
-              App.dashboard.addIdentifier(#{s.id}, 'sensor');
+              App.dashboard.addIdentifier("#{s.id}", 'sensor');
             == sensor_card(s)
 
 javascript:

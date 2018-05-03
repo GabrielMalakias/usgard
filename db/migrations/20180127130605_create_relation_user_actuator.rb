@@ -1,7 +1,7 @@
 Hanami::Model.migration do
   up do
     alter_table(:actuators) do
-      add_foreign_key :user_id, :users
+      add_foreign_key :user_id, :users, type: 'uuid'
     end
   end
 
